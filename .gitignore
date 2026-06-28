@@ -1,0 +1,9 @@
+# Materiali sorgente del brand e bozze (non parte del sito pubblicato)
+_sources/
+
+# Config locale di sviluppo / preview
+.claude/
+
+# macOS
+.DS_Store
+**/.DS_Store

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<!--
+  SITO VETRINA — DOTT.SSA MARIA GRAZIA GROSSO · Psichiatra e Psicoterapeuta (Pisa)
+  Logo ufficiale (PNG ottanio in /assets/logo). Palette ottanio: #356b77 / #5f9aaa. Font: Cormorant Garamond + Mulish.
+  Segnaposto [tra parentesi]: numero Ordine, contatti, indirizzo, orari, P.IVA, foto.
+  Prenotazioni: sostituisci tutte le occorrenze di INSERISCI-LINK-APPUNTOO con l'URL Appuntoo.
+-->
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dott.ssa Maria Grazia Grosso — Psichiatra e Psicoterapeuta a Pisa</title>
+<meta name="description" content="Dott.ssa Maria Grazia Grosso, medico specialista in Psichiatria e psicoterapeuta a Pisa. Visite psichiatriche e percorsi di psicoterapia per adulti, in studio e online.">
+<meta name="theme-color" content="#356b77">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Dott.ssa Maria Grazia Grosso — Psichiatra e Psicoterapeuta a Pisa">
+<meta property="og:description" content="Uno spazio sicuro per ritrovare il proprio equilibrio. Visite psichiatriche e psicoterapia per adulti, in studio a Pisa e online.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="it_IT">
+<meta property="og:image" content="assets/logo/versione-su-colore.png?v=5">
+
+<link rel="icon" type="image/png" href="assets/logo/favicon.png?v=5">
+<link rel="apple-touch-icon" href="assets/logo/favicon.png?v=5">
+
+<!-- Brand fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Mulish:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#f8fafa;
+    --surface:#ffffff;
+    --ink:#2c3b40;
+    --muted:#5d6f74;
+    --green:#5f9aaa;        /* ottanio medio del marchio */
+    --green-deep:#356b77;   /* ottanio profondo */
+    --cream:#eff5f5;        /* testo chiaro su ottanio */
+    --gold:#4a8593;         /* onda / accento */
+    --line:#d7e6e9;
+    --shadow:0 10px 30px -12px rgba(40,59,64,.18);
+    --radius:16px;
+    --serif:'Cormorant Garamond',Georgia,'Times New Roman',serif;
+    --sans:'Mulish',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);
+    color:var(--ink);background:var(--bg);line-height:1.65;-webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.12;letter-spacing:0}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+
+  /* NAV */
+  header{position:sticky;top:0;z-index:50;background:rgba(244,250,250,.82);
+    backdrop-filter:saturate(160%) blur(12px);border-bottom:1px solid var(--line)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:74px;gap:18px}
+  .brand{display:flex;align-items:center;gap:13px}
+  .brand img{width:42px;height:42px;object-fit:contain}
+  .bname{display:flex;flex-direction:column;line-height:1.12}
+  .bname strong{font-family:var(--serif);font-size:1.18rem;font-weight:600;color:var(--green-deep);letter-spacing:.01em}
+  .bname em{font-style:normal;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:3px}
+  .nav-links{display:flex;gap:28px;align-items:center}
+  .nav-links a{font-size:.93rem;color:var(--muted);transition:color .2s}
+  .nav-links a:hover{color:var(--green-deep)}
+  .nav-cta{background:var(--green);color:#fff!important;padding:9px 18px;border-radius:999px;
+    font-size:.9rem;font-weight:600;transition:transform .2s,box-shadow .2s}
+  .nav-cta:hover{transform:translateY(-1px);box-shadow:0 8px 18px -8px rgba(95,154,170,.75)}
+  .menu-btn{display:none;background:none;border:0;cursor:pointer;color:var(--ink);font-size:1.3rem;line-height:1}
+  @media(max-width:760px){.nav-links{display:none}.menu-btn{display:block}.bname em{display:none}}
+
+  /* HERO */
+  .hero{position:relative;overflow:hidden;padding:96px 0 90px;
+    background:linear-gradient(160deg,#e2eff1 0%,#eff5f5 55%,#e6f1f3 100%)}
+  .hero::before{content:"";position:absolute;width:420px;height:420px;right:-120px;top:-120px;
+    background:radial-gradient(circle,rgba(95,154,170,.20),transparent 70%);border-radius:50%}
+  .hero::after{content:"";position:absolute;width:360px;height:360px;left:-100px;bottom:-140px;
+    background:radial-gradient(circle,rgba(141,186,198,.28),transparent 70%);border-radius:50%}
+  .hero .wrap{position:relative;z-index:2;max-width:780px;text-align:center}
+  .hero .hero-logo{width:440px;max-width:88%;margin:0 auto 28px}
+  .hero p.lead{margin-left:auto;margin-right:auto}
+  .hero .btn-row{justify-content:center}
+  .eyebrow{display:inline-block;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600;
+    color:var(--green-deep);background:rgba(95,154,170,.16);padding:6px 14px;border-radius:999px;margin-bottom:22px}
+  .hero h1{font-size:clamp(2.4rem,5.4vw,3.7rem);margin-bottom:18px;font-weight:600}
+  .hero p.lead{font-size:1.18rem;color:var(--muted);max-width:620px;margin-bottom:34px}
+  .btn-row{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:9px;padding:14px 26px;border-radius:999px;
+    font-weight:600;font-size:1rem;transition:transform .2s,box-shadow .2s,background .2s}
+  .btn-primary{background:var(--green);color:#fff}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 26px -10px rgba(95,154,170,.6)}
+  .btn-ghost{background:#fff;color:var(--green-deep);border:1px solid var(--line)}
+  .btn-ghost:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+
+  /* SECTIONS */
+  section{padding:84px 0}
+  .section-tag{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:12px}
+  .section-title{font-size:clamp(1.9rem,3.8vw,2.6rem);margin-bottom:18px;font-weight:600}
+  .lead-muted{color:var(--muted);font-size:1.05rem;max-width:680px}
+
+  /* CHI SONO */
+  .about{display:grid;grid-template-columns:300px 1fr;gap:54px;align-items:center}
+  .portrait{aspect-ratio:3/4;border-radius:var(--radius);background:
+    linear-gradient(160deg,#d7e8eb,#e3eef0);display:flex;align-items:center;justify-content:center;
+    color:var(--muted);font-size:.85rem;text-align:center;padding:20px;box-shadow:var(--shadow);border:1px solid var(--line)}
+  .portrait img{width:100%;height:100%;object-fit:cover;border-radius:var(--radius)}
+  .about ul{list-style:none;margin-top:20px;display:grid;gap:10px}
+  .about li{padding-left:26px;position:relative;color:var(--muted)}
+  .about li::before{content:"";position:absolute;left:0;top:11px;width:9px;height:9px;border-radius:50%;background:var(--green)}
+  @media(max-width:760px){.about{grid-template-columns:1fr;gap:30px}.portrait{max-width:260px}}
+
+  /* AREE — cards */
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px;margin-top:42px}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    padding:28px 24px;transition:transform .25s,box-shadow .25s}
+  .card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+  .card .ico{width:46px;height:46px;border-radius:12px;background:rgba(95,154,170,.16);
+    display:flex;align-items:center;justify-content:center;margin-bottom:16px;color:var(--green-deep);font-size:1.35rem}
+  .card h3{font-size:1.32rem;margin-bottom:6px;font-weight:600}
+  .card p{color:var(--muted);font-size:.95rem}
+
+  /* COME FUNZIONA */
+  .steps{counter-reset:s;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px;margin-top:46px}
+  .step{position:relative;padding:34px 24px 24px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius)}
+  .step::before{counter-increment:s;content:counter(s);position:absolute;top:-18px;left:24px;
+    width:38px;height:38px;border-radius:50%;background:var(--green-deep);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1.15rem;font-weight:600;box-shadow:var(--shadow)}
+  .step h3{font-size:1.22rem;margin:8px 0;font-weight:600}
+  .step p{color:var(--muted);font-size:.94rem}
+
+  /* PRENOTAZIONE banner */
+  .booking{position:relative;overflow:hidden;background:linear-gradient(160deg,#6aa6b5,#5f9aaa 60%,#52828f);color:#fff;border-radius:24px;
+    padding:56px 44px;text-align:center;box-shadow:var(--shadow)}
+  .booking h2{color:#fff;font-size:clamp(1.8rem,3.2vw,2.4rem);margin-bottom:14px;font-weight:600}
+  .booking p{color:rgba(255,255,255,.9);max-width:560px;margin:0 auto 30px;font-size:1.05rem}
+  .booking .btn-primary{background:#fff;color:var(--green-deep)}
+  .booking .btn-primary:hover{box-shadow:0 14px 26px -10px rgba(0,0,0,.4)}
+  .booking .alt{margin-top:20px;font-size:.92rem;color:rgba(255,255,255,.75)}
+  .booking .alt a{color:#fff;border-bottom:1px solid rgba(255,255,255,.4)}
+
+  /* CONTATTI */
+  .contact{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+  .info-item{display:flex;gap:14px;margin-bottom:22px}
+  .info-item .ico{flex:none;width:42px;height:42px;border-radius:11px;background:rgba(131,173,186,.20);
+    display:flex;align-items:center;justify-content:center;color:#4a8593;font-size:1.2rem}
+  .info-item h3{font-size:1.18rem;margin-bottom:2px;font-weight:600}
+  .info-item p{color:var(--muted);font-size:.96rem}
+  .map{border-radius:var(--radius);overflow:hidden;background:linear-gradient(160deg,#dceaed,#e8f1f3);
+    min-height:300px;display:flex;align-items:center;justify-content:center;color:var(--muted);
+    text-align:center;padding:24px;border:1px solid var(--line);font-size:.9rem}
+  .map iframe{width:100%;height:100%;min-height:300px;border:0;display:block}
+  @media(max-width:760px){.contact{grid-template-columns:1fr;gap:30px}}
+
+  /* FOOTER */
+  footer{border-top:1px solid var(--line);padding:42px 0;background:#eaf2f3}
+  .foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px;color:var(--muted);font-size:.86rem}
+  .foot-logo{height:38px;width:auto;display:block}
+  .foot a:hover{color:var(--green-deep)}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <a class="brand" href="#top" aria-label="Maria Grazia Grosso, Psichiatra e Psicoterapeuta">
+        <img src="assets/logo/marchio.png?v=5" alt="Marchio MG — Maria Grazia Grosso" width="42" height="42">
+        <span class="bname">
+          <strong>Maria Grazia Grosso</strong>
+          <em>Psichiatra · Psicoterapeuta</em>
+        </span>
+      </a>
+      <div class="nav-links">
+        <a href="#chi-sono">Chi sono</a>
+        <a href="#aree">Aree di intervento</a>
+        <a href="#come-funziona">Come funziona</a>
+        <a href="#contatti">Contatti</a>
+        <a class="nav-cta" href="INSERISCI-LINK-APPUNTOO" target="_blank" rel="noopener">Prenota una visita</a>
+      </div>
+      <button class="menu-btn" onclick="document.getElementById('booking').scrollIntoView()" aria-label="Vai alla prenotazione">☰</button>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero" id="top">
+  <div class="wrap">
+    <img class="hero-logo" src="assets/logo/logo-primario.png?v=5" alt="Dott.ssa Maria Grazia Grosso — Psichiatra">
+    <span class="eyebrow">Psichiatra · Psicoterapeuta</span>
+    <h1>Uno spazio sicuro per ritrovare il proprio equilibrio</h1>
+    <p class="lead">Ascolto, competenza e riservatezza al centro di ogni percorso. Visite psichiatriche e percorsi di psicoterapia per adulti, in studio a Pisa e online.</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="INSERISCI-LINK-APPUNTOO" target="_blank" rel="noopener">Prenota una visita →</a>
+      <a class="btn btn-ghost" href="#chi-sono">Scopri di più</a>
+    </div>
+  </div>
+</div>
+
+<!-- CHI SONO -->
+<section id="chi-sono">
+  <div class="wrap">
+    <div class="about reveal">
+      <div class="portrait">[ Foto professionale<br>della dottoressa ]</div>
+      <div>
+        <div class="section-tag">Chi sono</div>
+        <h2 class="section-title">Dott.ssa Maria Grazia Grosso</h2>
+        <p class="lead-muted">Sono medico specialista in Psichiatria e psicoterapeuta, e accolgo ogni persona con ascolto, rispetto e senza giudizio. Credo in una cura che guarda all'individuo nella sua interezza — mente, corpo e relazioni — e in un percorso costruito insieme, nel rispetto dei tempi e degli obiettivi di ciascuno. Il mio scopo è offrire uno spazio sicuro in cui sentirsi compresi e ritrovare, passo dopo passo, il proprio equilibrio.</p>
+        <ul>
+          <li>Laurea in Medicina e Chirurgia — Università di Pisa, 2022</li>
+          <li>Specializzazione in Psichiatria — Università di Pisa, 2026</li>
+          <li>Iscritta all'Ordine dei Medici di Pisa — n. [00000]</li>
+          <li>Approccio integrato e centrato sulla persona, attento alla dimensione biologica, psicologica e relazionale</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AREE DI INTERVENTO -->
+<section id="aree" style="background:#eaf2f3">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="section-tag">Aree di intervento</div>
+      <h2 class="section-title">In cosa posso aiutarti</h2>
+      <p class="lead-muted">Un supporto specialistico per il benessere mentale, con percorsi personalizzati su ogni esigenza.</p>
+    </div>
+    <div class="grid">
+      <div class="card reveal"><div class="ico">◍</div><h3>Ansia e attacchi di panico</h3><p>[Valutazione e trattamento dei disturbi d'ansia, fobie e attacchi di panico.]</p></div>
+      <div class="card reveal"><div class="ico">◑</div><h3>Depressione e umore</h3><p>[Cura della depressione e dei disturbi dell'umore, con percorsi su misura.]</p></div>
+      <div class="card reveal"><div class="ico">☾</div><h3>Disturbi del sonno</h3><p>[Insonnia e alterazioni del sonno legate a stress o ansia.]</p></div>
+      <div class="card reveal"><div class="ico">❋</div><h3>Stress e burnout</h3><p>[Supporto per stress cronico, esaurimento e difficoltà lavorative.]</p></div>
+      <div class="card reveal"><div class="ico">◈</div><h3>Disturbi ossessivi</h3><p>[Diagnosi e trattamento del disturbo ossessivo-compulsivo.]</p></div>
+      <div class="card reveal"><div class="ico">♡</div><h3>Supporto nelle fasi di vita</h3><p>[Accompagnamento in cambiamenti, lutti e momenti di difficoltà.]</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- COME FUNZIONA -->
+<section id="come-funziona">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="section-tag">Come funziona</div>
+      <h2 class="section-title">Cosa aspettarti</h2>
+      <p class="lead-muted">Fare il primo passo è spesso la parte più difficile. Per questo ho reso il percorso semplice e trasparente.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><h3>Prenoti la visita</h3><p>Scegli giorno e orario online in pochi click, oppure chiamando lo studio.</p></div>
+      <div class="step reveal"><h3>Primo colloquio</h3><p>Un incontro di circa 45–60 minuti per conoscerci e capire insieme le tue esigenze, in studio o in videoconsulto.</p></div>
+      <div class="step reveal"><h3>Percorso condiviso</h3><p>Definiamo insieme un percorso personalizzato, nel pieno rispetto dei tuoi tempi e delle tue scelte.</p></div>
+      <div class="step reveal"><h3>Riservatezza totale</h3><p>Ogni informazione è trattata con la massima discrezione e nel rispetto del segreto professionale.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRENOTAZIONE -->
+<section id="booking" style="padding-top:40px">
+  <div class="wrap">
+    <div class="booking reveal">
+      <h2>Prenota la tua visita</h2>
+      <p>Disponibilità in studio a Pisa e in videoconsulto online. Scegli lo spazio che preferisci nell'agenda, in qualsiasi momento.</p>
+      <a class="btn btn-primary" href="INSERISCI-LINK-APPUNTOO" target="_blank" rel="noopener">Vai all'agenda online →</a>
+      <div class="alt">Preferisci il telefono? Chiama il <a href="tel:+39000000000">[+39 000 000 0000]</a> o scrivi a <a href="mailto:email@esempio.it">[email@esempio.it]</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATTI -->
+<section id="contatti" style="background:#eaf2f3">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="section-tag">Dove trovarmi</div>
+      <h2 class="section-title">Studio e contatti</h2>
+    </div>
+    <div class="contact" style="margin-top:38px">
+      <div class="reveal">
+        <div class="info-item"><div class="ico">⌖</div><div><h3>Indirizzo</h3><p>[Via Esempio 00, 56100 Pisa (PI)]</p></div></div>
+        <div class="info-item"><div class="ico">✆</div><div><h3>Telefono</h3><p>[+39 000 000 0000]</p></div></div>
+        <div class="info-item"><div class="ico">✉</div><div><h3>Email</h3><p>[email@esempio.it]</p></div></div>
+        <div class="info-item"><div class="ico">◷</div><div><h3>Orari</h3><p>[Lun–Ven 9:00–19:00 · su appuntamento]</p></div></div>
+      </div>
+      <!-- Per la mappa: incolla qui l'embed di Google Maps dello studio (Condividi → Incorpora una mappa). -->
+      <div class="map reveal">[ Qui puoi incorporare una mappa Google<br>dello studio — basta incollare il codice embed ]</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <img class="foot-logo" src="assets/logo/lockup-orizzontale.png?v=5" alt="Dott.ssa Maria Grazia Grosso · Psichiatra · Psicoterapeuta">
+      <div>© <span id="yr"></span> Dott.ssa Maria Grazia Grosso · P.IVA [00000000000]</div>
+      <div><a href="#">Privacy</a> · Iscr. Ordine dei Medici di Pisa n. [00000]</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
