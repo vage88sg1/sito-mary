@@ -72,8 +72,18 @@
   .nav-cta{background:var(--green);color:#fff!important;padding:9px 18px;border-radius:999px;
     font-size:.9rem;font-weight:600;transition:transform .2s,box-shadow .2s}
   .nav-cta:hover{transform:translateY(-1px);box-shadow:0 8px 18px -8px rgba(95,154,170,.75)}
-  .menu-btn{display:none;background:none;border:0;cursor:pointer;color:var(--ink);font-size:1.3rem;line-height:1}
-  @media(max-width:760px){.nav-links{display:none}.menu-btn{display:block}.bname em{display:none}}
+  .menu-btn{display:none;background:none;border:0;cursor:pointer;color:var(--ink);font-size:1.4rem;line-height:1;padding:6px}
+  @media(max-width:760px){
+    .bname em{display:none}
+    .menu-btn{display:block}
+    .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;
+      align-items:stretch;gap:0;background:var(--surface);border-bottom:1px solid var(--line);
+      padding:8px 24px 18px;box-shadow:var(--shadow)}
+    header.nav-open .nav-links{display:flex}
+    .nav-links a{padding:13px 2px;font-size:1.02rem;border-bottom:1px solid var(--line)}
+    .nav-links a:last-child{border-bottom:0}
+    .nav-cta{align-self:flex-start;margin-top:12px;padding:11px 22px}
+  }
 
   /* HERO */
   .hero{position:relative;overflow:hidden;padding:96px 0 90px;
@@ -181,14 +191,14 @@
           <em>Psichiatra · Psicoterapeuta</em>
         </span>
       </a>
-      <div class="nav-links">
+      <div class="nav-links" id="nav-links">
         <a href="#chi-sono">Chi sono</a>
         <a href="#aree">Aree di intervento</a>
         <a href="#come-funziona">Come funziona</a>
         <a href="#contatti">Contatti</a>
         <a class="nav-cta" href="INSERISCI-LINK-APPUNTOO" target="_blank" rel="noopener">Prenota una visita</a>
       </div>
-      <button class="menu-btn" onclick="document.getElementById('booking').scrollIntoView()" aria-label="Vai alla prenotazione">☰</button>
+      <button class="menu-btn" type="button" aria-label="Apri menu" aria-expanded="false" aria-controls="nav-links">☰</button>
     </nav>
   </div>
 </header>
@@ -311,6 +321,15 @@
     entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
   },{threshold:.12});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // Menu mobile
+  const header = document.querySelector('header');
+  const menuBtn = document.querySelector('.menu-btn');
+  const setMenu = (open)=>{ header.classList.toggle('nav-open', open); menuBtn.setAttribute('aria-expanded', open); };
+  menuBtn.addEventListener('click', (e)=>{ e.stopPropagation(); setMenu(!header.classList.contains('nav-open')); });
+  document.querySelectorAll('#nav-links a').forEach(a=>a.addEventListener('click', ()=>setMenu(false)));
+  document.addEventListener('click', (e)=>{ if(header.classList.contains('nav-open') && !header.contains(e.target)) setMenu(false); });
+  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') setMenu(false); });
 </script>
 </body>
 </html>
