@@ -27,10 +27,29 @@
 <link rel="icon" type="image/png" href="assets/logo/favicon.png?v=11">
 <link rel="apple-touch-icon" href="assets/logo/favicon.png?v=11">
 
-<!-- Brand fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Mulish:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- Brand fonts: self-hosted (GDPR-friendly, nessun contatto con Google) -->
+<style>
+@font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:500;font-display:swap;src:url(assets/fonts/CormorantGaramond-italic-500-latin-ext.woff2) format('woff2');unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+@font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:500;font-display:swap;src:url(assets/fonts/CormorantGaramond-italic-500-latin.woff2) format('woff2');unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:600;font-display:swap;src:url(assets/fonts/CormorantGaramond-italic-600-latin-ext.woff2) format('woff2');unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+@font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:600;font-display:swap;src:url(assets/fonts/CormorantGaramond-italic-600-latin.woff2) format('woff2');unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:500;font-display:swap;src:url(assets/fonts/CormorantGaramond-normal-500-latin-ext.woff2) format('woff2');unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:500;font-display:swap;src:url(assets/fonts/CormorantGaramond-normal-500-latin.woff2) format('woff2');unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:600;font-display:swap;src:url(assets/fonts/CormorantGaramond-normal-600-latin-ext.woff2) format('woff2');unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:600;font-display:swap;src:url(assets/fonts/CormorantGaramond-normal-600-latin.woff2) format('woff2');unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:700;font-display:swap;src:url(assets/fonts/CormorantGaramond-normal-700-latin-ext.woff2) format('woff2');unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:700;font-display:swap;src:url(assets/fonts/CormorantGaramond-normal-700-latin.woff2) format('woff2');unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Mulish';font-style:normal;font-weight:300;font-display:swap;src:url(assets/fonts/Mulish-normal-300-latin-ext.woff2) format('woff2');unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+@font-face{font-family:'Mulish';font-style:normal;font-weight:300;font-display:swap;src:url(assets/fonts/Mulish-normal-300-latin.woff2) format('woff2');unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Mulish';font-style:normal;font-weight:400;font-display:swap;src:url(assets/fonts/Mulish-normal-400-latin-ext.woff2) format('woff2');unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+@font-face{font-family:'Mulish';font-style:normal;font-weight:400;font-display:swap;src:url(assets/fonts/Mulish-normal-400-latin.woff2) format('woff2');unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Mulish';font-style:normal;font-weight:500;font-display:swap;src:url(assets/fonts/Mulish-normal-500-latin-ext.woff2) format('woff2');unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+@font-face{font-family:'Mulish';font-style:normal;font-weight:500;font-display:swap;src:url(assets/fonts/Mulish-normal-500-latin.woff2) format('woff2');unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Mulish';font-style:normal;font-weight:600;font-display:swap;src:url(assets/fonts/Mulish-normal-600-latin-ext.woff2) format('woff2');unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+@font-face{font-family:'Mulish';font-style:normal;font-weight:600;font-display:swap;src:url(assets/fonts/Mulish-normal-600-latin.woff2) format('woff2');unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Mulish';font-style:normal;font-weight:700;font-display:swap;src:url(assets/fonts/Mulish-normal-700-latin-ext.woff2) format('woff2');unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+@font-face{font-family:'Mulish';font-style:normal;font-weight:700;font-display:swap;src:url(assets/fonts/Mulish-normal-700-latin.woff2) format('woff2');unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+</style>
 
 <style>
   :root{
@@ -227,7 +246,11 @@
   .booking .btn-primary:hover{box-shadow:0 14px 26px -10px rgba(0,0,0,.4)}
   .cal-card{margin-top:26px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
     box-shadow:var(--shadow);padding:8px;overflow:hidden;transition:background .3s,border-color .3s}
-  #my-cal-inline{width:100%;min-height:640px;overflow:auto}
+  #my-cal-inline{width:100%;overflow:auto}
+  .cal-card.loaded #my-cal-inline{min-height:640px}
+  .cal-placeholder{text-align:center;padding:40px 20px}
+  .cal-placeholder p{color:var(--muted);font-size:.95rem;max-width:480px;margin:0 auto 20px}
+  .cal-card.loaded .cal-placeholder{display:none}
   .cal-back{display:inline-flex;align-items:center;gap:6px;margin:2px 4px 10px;padding:8px 14px;
     border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--green-deep);
     font-family:inherit;font-size:.9rem;font-weight:600;cursor:pointer;transition:background .2s}
@@ -371,6 +394,10 @@
     </div>
     <div class="cal-card reveal">
       <button type="button" id="cal-back" class="cal-back" hidden>← Tutti i tipi di visita</button>
+      <div id="cal-placeholder" class="cal-placeholder">
+        <p>Il calendario di prenotazione è fornito da <strong>Cal.com</strong>. Verrà caricato — e i suoi server contattati — solo dopo il tuo click.</p>
+        <button type="button" id="cal-load" class="btn btn-primary">Mostra il calendario e prenota →</button>
+      </div>
       <div id="my-cal-inline"></div>
     </div>
   </div>
@@ -402,7 +429,7 @@
       <img class="foot-logo logo-light" src="assets/logo/lockup-orizzontale.png?v=11" alt="Dott.ssa Maria Grazia Grosso · Psichiatra · Psicoterapeuta">
       <img class="foot-logo logo-dark" src="assets/logo/lockup-orizzontale-dark.png?v=11" alt="" aria-hidden="true">
       <div>© <span id="yr"></span> Dott.ssa Maria Grazia Grosso · P.IVA [00000000000]</div>
-      <div><a href="#">Privacy</a> · Iscr. Ordine dei Medici di Pisa n. [00000]</div>
+      <div><a href="privacy.html">Privacy</a> · Iscr. Ordine dei Medici di Pisa n. [00000]</div>
     </div>
   </div>
 </footer>
@@ -444,33 +471,26 @@
   document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') setMenu(false); });
 </script>
 
-<!-- Cal.com — calendario di prenotazione inline -->
+<!-- Cal.com — caricato SOLO su richiesta dell'utente (privacy-friendly: nessun contatto con Cal.com prima del click) -->
 <script type="text/javascript">
-  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-  Cal("init", "studio", { origin: "https://cal.com" });
-  Cal.ns["studio"]("inline", {
-    elementOrSelector: "#my-cal-inline",
-    config: { layout: "month_view" },
-    calLink: "maria-grazia-ftoc1u",
-  });
-  Cal.ns["studio"]("ui", { hideEventTypeDetails: false, layout: "month_view", theme: (document.documentElement.getAttribute('data-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')) });
-
-  // Pulsante "indietro": torna alla lista dei tipi di visita
-  (function(){
+  var calLoaded = false;
+  function loadCal(){
+    if (calLoaded) return; calLoaded = true;
+    var card = document.querySelector('.cal-card'); if (card) card.classList.add('loaded');
+    (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+    Cal("init", "studio", { origin: "https://cal.com" });
+    Cal.ns["studio"]("inline", { elementOrSelector: "#my-cal-inline", config: { layout: "month_view" }, calLink: "maria-grazia-ftoc1u" });
+    Cal.ns["studio"]("ui", { hideEventTypeDetails: false, layout: "month_view", theme: (document.documentElement.getAttribute('data-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')) });
+    // Pulsante "indietro": torna alla lista dei tipi di visita
     var calBack = document.getElementById('cal-back');
     var baseSrc = null;
-    var grab = setInterval(function(){
-      var f = document.querySelector('#my-cal-inline iframe');
-      if (f && f.src) { baseSrc = f.src; clearInterval(grab); }
-    }, 150);
+    var grab = setInterval(function(){ var f = document.querySelector('#my-cal-inline iframe'); if (f && f.src) { baseSrc = f.src; clearInterval(grab); } }, 150);
     Cal.ns["studio"]("on", { action: "eventTypeSelected", callback: function(){ calBack.hidden = false; } });
     Cal.ns["studio"]("on", { action: "bookingSuccessful", callback: function(){ calBack.hidden = false; } });
-    calBack.addEventListener('click', function(){
-      var f = document.querySelector('#my-cal-inline iframe');
-      if (f && baseSrc) f.src = baseSrc;
-      calBack.hidden = true;
-    });
-  })();
+    calBack.addEventListener('click', function(){ var f = document.querySelector('#my-cal-inline iframe'); if (f && baseSrc) f.src = baseSrc; calBack.hidden = true; });
+  }
+  document.getElementById('cal-load').addEventListener('click', loadCal);
+  document.querySelectorAll('.nav-cta, .hero .btn-primary').forEach(function(a){ a.addEventListener('click', loadCal); });
 </script>
 </body>
 </html>
