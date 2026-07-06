@@ -452,7 +452,7 @@
   const systemDark = window.matchMedia('(prefers-color-scheme: dark)');
   const currentTheme = ()=> root.getAttribute('data-theme') || (systemDark.matches ? 'dark' : 'light');
   const syncPressed = ()=> themeBtn.setAttribute('aria-pressed', currentTheme()==='dark');
-  const applyCalTheme = (t)=>{ try{ if(window.Cal && Cal.ns && Cal.ns.studio) Cal.ns.studio("ui", { theme: t }); }catch(e){} };
+  const applyCalTheme = (t)=>{ try{ if(window.__calSetTheme) window.__calSetTheme(t); }catch(e){} };
   themeBtn.addEventListener('click', ()=>{
     const next = currentTheme()==='dark' ? 'light' : 'dark';
     root.setAttribute('data-theme', next);
@@ -478,24 +478,38 @@
 
 <!-- Cal.com — caricato SOLO su richiesta dell'utente (privacy-friendly: nessun contatto con Cal.com prima del click) -->
 <script type="text/javascript">
-  var calLoaded = false;
+  var calLoaded = false, calBaseSrc = null;
+  function calTheme(){ return document.documentElement.getAttribute('data-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); }
+  // Renderizza (o ri-renderizza) il calendario col tema e i colori del brand
+  function renderCal(theme){
+    var el = document.getElementById('my-cal-inline'); if (el) el.innerHTML = '';
+    var calBack = document.getElementById('cal-back'); if (calBack) calBack.hidden = true;
+    Cal.ns["studio"]("inline", { elementOrSelector: "#my-cal-inline", config: { layout: "month_view", theme: theme }, calLink: "maria-grazia-ftoc1u" });
+    Cal.ns["studio"]("ui", {
+      hideEventTypeDetails: false,
+      layout: "month_view",
+      theme: theme,
+      cssVarsPerTheme: { light: { "cal-brand": "#356b77" }, dark: { "cal-brand": "#8fc0cd" } }
+    });
+    calBaseSrc = null;
+    var grab = setInterval(function(){ var f = document.querySelector('#my-cal-inline iframe'); if (f && f.src) { calBaseSrc = f.src; clearInterval(grab); } }, 150);
+  }
   function loadCal(){
     if (calLoaded) return; calLoaded = true;
     var card = document.querySelector('.cal-card'); if (card) card.classList.add('loaded');
     (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
     Cal("init", "studio", { origin: "https://cal.com" });
-    Cal.ns["studio"]("inline", { elementOrSelector: "#my-cal-inline", config: { layout: "month_view" }, calLink: "maria-grazia-ftoc1u" });
-    Cal.ns["studio"]("ui", { hideEventTypeDetails: false, layout: "month_view", theme: (document.documentElement.getAttribute('data-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')) });
-    // Pulsante "indietro": torna alla lista dei tipi di visita
+    // Pulsante "indietro": torna alla lista dei tipi di visita (handler registrati una sola volta)
     var calBack = document.getElementById('cal-back');
-    var baseSrc = null;
-    var grab = setInterval(function(){ var f = document.querySelector('#my-cal-inline iframe'); if (f && f.src) { baseSrc = f.src; clearInterval(grab); } }, 150);
     Cal.ns["studio"]("on", { action: "eventTypeSelected", callback: function(){ calBack.hidden = false; } });
     Cal.ns["studio"]("on", { action: "bookingSuccessful", callback: function(){ calBack.hidden = false; } });
-    calBack.addEventListener('click', function(){ var f = document.querySelector('#my-cal-inline iframe'); if (f && baseSrc) f.src = baseSrc; calBack.hidden = true; });
+    calBack.addEventListener('click', function(){ var f = document.querySelector('#my-cal-inline iframe'); if (f && calBaseSrc) f.src = calBaseSrc; calBack.hidden = true; });
+    renderCal(calTheme());
   }
   document.getElementById('cal-load').addEventListener('click', loadCal);
   document.querySelectorAll('.nav-cta, .hero .btn-primary').forEach(function(a){ a.addEventListener('click', loadCal); });
+  // Ri-renderizza col nuovo tema quando l'utente cambia chiaro/scuro
+  window.__calSetTheme = function(t){ if (calLoaded) renderCal(t); };
 </script>
 </body>
 </html>
