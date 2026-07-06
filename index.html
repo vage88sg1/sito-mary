@@ -228,6 +228,11 @@
   .cal-card{margin-top:26px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
     box-shadow:var(--shadow);padding:8px;overflow:hidden;transition:background .3s,border-color .3s}
   #my-cal-inline{width:100%;min-height:640px;overflow:auto}
+  .cal-back{display:inline-flex;align-items:center;gap:6px;margin:2px 4px 10px;padding:8px 14px;
+    border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--green-deep);
+    font-family:inherit;font-size:.9rem;font-weight:600;cursor:pointer;transition:background .2s}
+  .cal-back:hover{background:rgba(95,154,170,.12)}
+  .cal-back[hidden]{display:none}
   .booking .alt{margin-top:20px;font-size:.92rem;color:rgba(255,255,255,.75)}
   .booking .alt a{color:#fff;border-bottom:1px solid rgba(255,255,255,.4)}
 
@@ -365,6 +370,7 @@
       <div class="alt">Preferisci il telefono? Chiama il <a href="tel:+39000000000">[+39 000 000 0000]</a> o scrivi a <a href="mailto:email@esempio.it">[email@esempio.it]</a></div>
     </div>
     <div class="cal-card reveal">
+      <button type="button" id="cal-back" class="cal-back" hidden>← Tutti i tipi di visita</button>
       <div id="my-cal-inline"></div>
     </div>
   </div>
@@ -448,6 +454,23 @@
     calLink: "maria-grazia-ftoc1u",
   });
   Cal.ns["studio"]("ui", { hideEventTypeDetails: false, layout: "month_view", theme: (document.documentElement.getAttribute('data-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')) });
+
+  // Pulsante "indietro": torna alla lista dei tipi di visita
+  (function(){
+    var calBack = document.getElementById('cal-back');
+    var baseSrc = null;
+    var grab = setInterval(function(){
+      var f = document.querySelector('#my-cal-inline iframe');
+      if (f && f.src) { baseSrc = f.src; clearInterval(grab); }
+    }, 150);
+    Cal.ns["studio"]("on", { action: "eventTypeSelected", callback: function(){ calBack.hidden = false; } });
+    Cal.ns["studio"]("on", { action: "bookingSuccessful", callback: function(){ calBack.hidden = false; } });
+    calBack.addEventListener('click', function(){
+      var f = document.querySelector('#my-cal-inline iframe');
+      if (f && baseSrc) f.src = baseSrc;
+      calBack.hidden = true;
+    });
+  })();
 </script>
 </body>
 </html>
