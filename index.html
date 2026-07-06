@@ -3,7 +3,7 @@
   SITO VETRINA — DOTT.SSA MARIA GRAZIA GROSSO · Psichiatra e Psicoterapeuta (Pisa)
   Logo ufficiale (PNG ottanio in /assets/logo). Palette ottanio: #356b77 / #5f9aaa. Font: Cormorant Garamond + Mulish.
   Segnaposto [tra parentesi]: numero Ordine, contatti, indirizzo, orari, P.IVA, foto.
-  Prenotazioni: sostituisci tutte le occorrenze di INSERISCI-LINK-APPUNTOO con l'URL Appuntoo.
+  Prenotazioni: calendario Cal.com incorporato nella sezione #booking (calLink in fondo alla pagina).
 -->
 <html lang="it">
 <head>
@@ -225,6 +225,9 @@
   .booking p{color:rgba(255,255,255,.9);max-width:560px;margin:0 auto 30px;font-size:1.05rem}
   .booking .btn-primary{background:#fff;color:#356b77}
   .booking .btn-primary:hover{box-shadow:0 14px 26px -10px rgba(0,0,0,.4)}
+  .cal-card{margin-top:26px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);padding:8px;overflow:hidden}
+  #my-cal-inline{width:100%;min-height:640px;overflow:auto}
   .booking .alt{margin-top:20px;font-size:.92rem;color:rgba(255,255,255,.75)}
   .booking .alt a{color:#fff;border-bottom:1px solid rgba(255,255,255,.4)}
 
@@ -272,7 +275,7 @@
         <a href="#aree">Aree di intervento</a>
         <a href="#come-funziona">Come funziona</a>
         <a href="#contatti">Contatti</a>
-        <a class="nav-cta" href="INSERISCI-LINK-APPUNTOO" target="_blank" rel="noopener">Prenota una visita</a>
+        <a class="nav-cta" href="#booking">Prenota una visita</a>
       </div>
       <button class="theme-toggle" type="button" aria-label="Cambia tema chiaro/scuro" title="Tema chiaro/scuro" aria-pressed="false">
         <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
@@ -291,7 +294,7 @@
     <h1>Uno spazio sicuro per ritrovare il proprio equilibrio</h1>
     <p class="lead">Ascolto, competenza e riservatezza al centro di ogni percorso. Visite psichiatriche e percorsi di psicoterapia per adulti, in studio a Pisa e online.</p>
     <div class="btn-row">
-      <a class="btn btn-primary" href="INSERISCI-LINK-APPUNTOO" target="_blank" rel="noopener">Prenota una visita →</a>
+      <a class="btn btn-primary" href="#booking">Prenota una visita →</a>
       <a class="btn btn-ghost" href="#chi-sono">Scopri di più</a>
     </div>
   </div>
@@ -358,9 +361,11 @@
   <div class="wrap">
     <div class="booking reveal">
       <h2>Prenota la tua visita</h2>
-      <p>Disponibilità in studio a Pisa e in videoconsulto online. Scegli lo spazio che preferisci nell'agenda, in qualsiasi momento.</p>
-      <a class="btn btn-primary" href="INSERISCI-LINK-APPUNTOO" target="_blank" rel="noopener">Vai all'agenda online →</a>
+      <p>Disponibilità in studio a Pisa e in videoconsulto online. Scegli giorno e ora nel calendario qui sotto.</p>
       <div class="alt">Preferisci il telefono? Chiama il <a href="tel:+39000000000">[+39 000 000 0000]</a> o scrivi a <a href="mailto:email@esempio.it">[email@esempio.it]</a></div>
+    </div>
+    <div class="cal-card reveal">
+      <div id="my-cal-inline"></div>
     </div>
   </div>
 </section>
@@ -426,6 +431,18 @@
   document.querySelectorAll('#nav-links a').forEach(a=>a.addEventListener('click', ()=>setMenu(false)));
   document.addEventListener('click', (e)=>{ if(header.classList.contains('nav-open') && !header.contains(e.target)) setMenu(false); });
   document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') setMenu(false); });
+</script>
+
+<!-- Cal.com — calendario di prenotazione inline -->
+<script type="text/javascript">
+  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+  Cal("init", "prima-visita", { origin: "https://cal.com" });
+  Cal.ns["prima-visita"]("inline", {
+    elementOrSelector: "#my-cal-inline",
+    config: { layout: "month_view" },
+    calLink: "maria-grazia-ftoc1u/prima-visita-psichiatrica",
+  });
+  Cal.ns["prima-visita"]("ui", { hideEventTypeDetails: false, layout: "month_view", theme: "light" });
 </script>
 </body>
 </html>
