@@ -3,7 +3,7 @@
   SITO VETRINA — DOTT.SSA MARIA GRAZIA GROSSO · Psichiatra e Psicoterapeuta (Pisa)
   Logo ufficiale (PNG ottanio in /assets/logo). Palette ottanio: #356b77 / #5f9aaa. Font: Cormorant Garamond + Mulish.
   Segnaposto [tra parentesi]: numero Ordine, contatti, indirizzo, orari, P.IVA, foto.
-  Prenotazioni: calendario Cal.com incorporato nella sezione #booking (calLink in fondo alla pagina).
+  Prenotazioni: calendario Cal.eu (istanza UE) incorporato nella sezione #booking (embed in fondo alla pagina, origin app.cal.eu).
 -->
 <html lang="it">
 <head>
@@ -485,7 +485,7 @@
   function renderCal(theme){
     var el = document.getElementById('my-cal-inline'); if (el) el.innerHTML = '';
     var calBack = document.getElementById('cal-back'); if (calBack) calBack.hidden = true;
-    Cal.ns["studio"]("inline", { elementOrSelector: "#my-cal-inline", config: { layout: "month_view", theme: theme }, calLink: "maria-grazia-ftoc1u" });
+    Cal.ns["studio"]("inline", { elementOrSelector: "#my-cal-inline", config: { layout: "month_view", theme: theme }, calLink: "maria-grazia-80a4no" });
     Cal.ns["studio"]("ui", {
       hideEventTypeDetails: false,
       layout: "month_view",
@@ -498,8 +498,8 @@
   function loadCal(){
     if (calLoaded) return; calLoaded = true;
     var card = document.querySelector('.cal-card'); if (card) card.classList.add('loaded');
-    (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-    Cal("init", "studio", { origin: "https://cal.com" });
+    (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.eu/embed/embed.js", "init");
+    Cal("init", "studio", { origin: "https://cal.eu" });
     // Pulsante "indietro": torna alla lista dei tipi di visita (handler registrati una sola volta)
     var calBack = document.getElementById('cal-back');
     Cal.ns["studio"]("on", { action: "eventTypeSelected", callback: function(){ calBack.hidden = false; } });
