@@ -3,7 +3,7 @@
   SITO VETRINA — DOTT.SSA MARIA GRAZIA GROSSO · Psichiatra e Psicoterapeuta (Pisa)
   Logo ufficiale (PNG ottanio in /assets/logo). Palette ottanio: #356b77 / #5f9aaa. Font: Cormorant Garamond + Mulish.
   Segnaposto [tra parentesi]: numero Ordine, contatti, indirizzo, orari, P.IVA, foto.
-  Prenotazioni: sezione #booking incorpora la pagina Appuntoo in un iframe a larghezza piena (limite dato dalla colonna centrale del sito), caricato direttamente (nessun bottone).
+  Prenotazioni: bottoni "Prenota una visita" aprono #book-dialog (overlay a schermo intero, iframe a piena larghezza/altezza reale) con l'iframe Appuntoo, caricato solo al click.
 -->
 <html lang="it">
 <head>
@@ -248,16 +248,24 @@
     padding:56px 44px;text-align:center;box-shadow:var(--shadow)}
   .booking h2{color:#fff;font-size:clamp(1.8rem,3.2vw,2.4rem);margin-bottom:14px;font-weight:600}
   .booking p{color:rgba(255,255,255,.9);max-width:560px;margin:0 auto 30px;font-size:1.05rem}
-  .booking .btn-primary{background:#fff;color:#356b77}
+  .booking .btn-primary{background:#fff;color:#356b77;border:0;cursor:pointer;font-family:inherit}
   .booking .btn-primary:hover{box-shadow:0 14px 26px -10px rgba(0,0,0,.4)}
-  .book-panel{margin-top:26px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
-    box-shadow:var(--shadow);padding:36px 32px;transition:background .3s,border-color .3s}
-  .book-iframe{width:100%;height:900px;border:0;border-radius:12px;
-    background:#fff;box-shadow:var(--shadow)}
-  @media(max-width:600px){.book-panel{padding:24px 14px}}
-  .book-note{margin-top:16px;font-size:.86rem;color:var(--muted);text-align:center}
   .booking .alt{margin-top:20px;font-size:.92rem;color:rgba(255,255,255,.75)}
   .booking .alt a{color:#fff;border-bottom:1px solid rgba(255,255,255,.4)}
+
+  /* Dialog di prenotazione a schermo intero */
+  .book-dialog{position:fixed;inset:0;z-index:200;background:var(--bg);
+    display:flex;flex-direction:column}
+  .book-dialog[hidden]{display:none}
+  .book-dialog-bar{display:flex;align-items:center;justify-content:space-between;
+    padding:14px 20px;background:var(--surface);border-bottom:1px solid var(--line);
+    font-weight:600;color:var(--ink);flex:none}
+  .book-dialog-close{width:38px;height:38px;border-radius:999px;border:1px solid var(--line);
+    background:var(--surface);color:var(--ink);font-size:1rem;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;transition:background .2s}
+  .book-dialog-close:hover{background:rgba(95,154,170,.12)}
+  .book-dialog-body{flex:1 1 auto;display:flex;overflow:auto}
+  .book-dialog-iframe{width:100%;height:100%;border:0;background:#fff}
 
   /* CONTATTI */
   .contact{display:grid;grid-template-columns:1fr 1fr;gap:48px}
@@ -389,18 +397,23 @@
   <div class="wrap">
     <div class="booking reveal">
       <h2>Prenota la tua visita</h2>
-      <p>Disponibilità in studio a Pisa e in videoconsulto online. Scegli giorno e ora nel modulo qui sotto.</p>
+      <p>Disponibilità in studio a Pisa e in videoconsulto online. Prenota in pochi click sul portale sicuro di Appuntoo.</p>
+      <button type="button" class="btn btn-primary" id="book-open">Prenota una visita →</button>
       <div class="alt">Preferisci il telefono? Chiama il <a href="tel:+39000000000">[+39 000 000 0000]</a> o scrivi a <a href="mailto:email@esempio.it">[email@esempio.it]</a></div>
-    </div>
-    <div class="book-panel reveal">
-      <div class="book-frame-wrap">
-        <iframe class="book-iframe" title="Prenotazione online — Appuntoo" loading="lazy"
-          src="https://appuntoo.com/prenota/studio-di-maria-grazia-grosso/psichiatra/pisa"></iframe>
-      </div>
-      <div class="book-note">Conferma da parte dello studio, nessun pagamento online. Il modulo qui sopra è fornito da Appuntoo.</div>
     </div>
   </div>
 </section>
+
+<!-- Dialog di prenotazione a schermo intero -->
+<div id="book-dialog" class="book-dialog" hidden>
+  <div class="book-dialog-bar">
+    <span>Prenotazione — Appuntoo</span>
+    <button type="button" id="book-close" class="book-dialog-close" aria-label="Chiudi">✕</button>
+  </div>
+  <div class="book-dialog-body">
+    <iframe id="book-iframe" class="book-dialog-iframe" title="Prenotazione online — Appuntoo"></iframe>
+  </div>
+</div>
 
 <!-- CONTATTI -->
 <section id="contatti" class="alt-bg">
@@ -463,6 +476,23 @@
   document.querySelectorAll('#nav-links a').forEach(a=>a.addEventListener('click', ()=>setMenu(false)));
   document.addEventListener('click', (e)=>{ if(header.classList.contains('nav-open') && !header.contains(e.target)) setMenu(false); });
   document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') setMenu(false); });
+
+  // Dialog di prenotazione a schermo intero (Appuntoo)
+  const bookDialog = document.getElementById('book-dialog');
+  const bookIframe = document.getElementById('book-iframe');
+  let bookLoaded = false;
+  const openBooking = (e)=>{
+    if (e) e.preventDefault();
+    if (header.classList.contains('nav-open')) setMenu(false);
+    if (!bookLoaded) { bookIframe.src = 'https://appuntoo.com/prenota/studio-di-maria-grazia-grosso/psichiatra/pisa'; bookLoaded = true; }
+    bookDialog.hidden = false;
+    document.body.style.overflow = 'hidden';
+  };
+  const closeBooking = ()=>{ bookDialog.hidden = true; document.body.style.overflow = ''; };
+  document.getElementById('book-open').addEventListener('click', openBooking);
+  document.getElementById('book-close').addEventListener('click', closeBooking);
+  document.querySelectorAll('.nav-cta, .hero .btn-primary').forEach(a=>a.addEventListener('click', openBooking));
+  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && !bookDialog.hidden) closeBooking(); });
 </script>
 </body>
 </html>
