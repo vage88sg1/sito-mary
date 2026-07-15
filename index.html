@@ -3,7 +3,7 @@
   SITO VETRINA — DOTT.SSA MARIA GRAZIA GROSSO · Psichiatra e Psicoterapeuta (Pisa)
   Logo ufficiale (PNG ottanio in /assets/logo). Palette ottanio: #356b77 / #5f9aaa. Font: Cormorant Garamond + Mulish.
   Segnaposto [tra parentesi]: numero Ordine, contatti, indirizzo, orari, P.IVA, foto.
-  Prenotazioni: calendario Cal.eu (istanza UE) incorporato nella sezione #booking (embed in fondo alla pagina, origin app.cal.eu).
+  Prenotazioni: sezione #booking incorpora la pagina Appuntoo in un iframe a larghezza piena (limite dato dalla colonna centrale del sito), caricato direttamente (nessun bottone).
 -->
 <html lang="it">
 <head>
@@ -250,18 +250,20 @@
   .booking p{color:rgba(255,255,255,.9);max-width:560px;margin:0 auto 30px;font-size:1.05rem}
   .booking .btn-primary{background:#fff;color:#356b77}
   .booking .btn-primary:hover{box-shadow:0 14px 26px -10px rgba(0,0,0,.4)}
-  .cal-card{margin-top:26px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
-    box-shadow:var(--shadow);padding:8px;overflow:hidden;transition:background .3s,border-color .3s}
-  #my-cal-inline{width:100%;overflow:auto}
-  .cal-card.loaded #my-cal-inline{min-height:640px}
-  .cal-placeholder{text-align:center;padding:40px 20px}
-  .cal-placeholder p{color:var(--muted);font-size:.95rem;max-width:480px;margin:0 auto 20px}
-  .cal-card.loaded .cal-placeholder{display:none}
-  .cal-back{display:inline-flex;align-items:center;gap:6px;margin:2px 4px 10px;padding:8px 14px;
-    border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--green-deep);
-    font-family:inherit;font-size:.9rem;font-weight:600;cursor:pointer;transition:background .2s}
-  .cal-back:hover{background:rgba(95,154,170,.12)}
-  .cal-back[hidden]{display:none}
+  .book-panel{margin-top:26px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);padding:36px 32px;transition:background .3s,border-color .3s}
+  .book-panel h3{font-size:1.15rem;font-weight:600;margin-bottom:20px;text-align:center}
+  .book-services{display:grid;gap:12px;margin-bottom:28px}
+  .book-service{display:flex;align-items:center;justify-content:space-between;gap:16px;
+    padding:16px 20px;border:1px solid var(--line);border-radius:12px;background:var(--bg)}
+  .book-service .name{font-weight:600;color:var(--ink)}
+  .book-service .duration{color:var(--muted);font-size:.88rem;margin-top:2px}
+  .book-service .price{font-weight:700;color:var(--green-deep);font-size:1.05rem;white-space:nowrap}
+  .book-iframe{width:100%;height:800px;border:0;border-radius:12px;
+    background:#fff;box-shadow:var(--shadow)}
+  @media(max-width:600px){.book-panel{padding:24px 14px}}
+  .book-iframe[hidden]{display:none}
+  .book-note{margin-top:16px;font-size:.86rem;color:var(--muted);text-align:center}
   .booking .alt{margin-top:20px;font-size:.92rem;color:rgba(255,255,255,.75)}
   .booking .alt a{color:#fff;border-bottom:1px solid rgba(255,255,255,.4)}
 
@@ -395,16 +397,26 @@
   <div class="wrap">
     <div class="booking reveal">
       <h2>Prenota la tua visita</h2>
-      <p>Disponibilità in studio a Pisa e in videoconsulto online. Scegli giorno e ora nel calendario qui sotto.</p>
+      <p>Disponibilità in studio a Pisa e in videoconsulto online. Scegli la prestazione qui sotto per andare alla prenotazione online.</p>
       <div class="alt">Preferisci il telefono? Chiama il <a href="tel:+39000000000">[+39 000 000 0000]</a> o scrivi a <a href="mailto:email@esempio.it">[email@esempio.it]</a></div>
     </div>
-    <div class="cal-card reveal">
-      <button type="button" id="cal-back" class="cal-back" hidden>← Tutti i tipi di visita</button>
-      <div id="cal-placeholder" class="cal-placeholder">
-        <p>Il calendario di prenotazione è fornito da <strong>Cal.com</strong>. Verrà caricato — e i suoi server contattati — solo dopo il tuo click.</p>
-        <button type="button" id="cal-load" class="btn btn-primary">Mostra il calendario e prenota →</button>
+    <div class="book-panel reveal">
+      <h3>Prestazioni disponibili</h3>
+      <div class="book-services">
+        <div class="book-service">
+          <div><div class="name">Prima Visita</div><div class="duration">60 minuti</div></div>
+          <div class="price">120 €</div>
+        </div>
+        <div class="book-service">
+          <div><div class="name">Visita di controllo</div><div class="duration">30 minuti</div></div>
+          <div class="price">60 €</div>
+        </div>
       </div>
-      <div id="my-cal-inline"></div>
+      <div class="book-frame-wrap">
+        <iframe class="book-iframe" title="Prenotazione online — Appuntoo" loading="lazy"
+          src="https://appuntoo.com/prenota/studio-di-maria-grazia-grosso/psichiatra/pisa"></iframe>
+      </div>
+      <div class="book-note">Conferma da parte dello studio, nessun pagamento online. Il modulo qui sopra è fornito da Appuntoo.</div>
     </div>
   </div>
 </section>
@@ -453,18 +465,13 @@
   const systemDark = window.matchMedia('(prefers-color-scheme: dark)');
   const currentTheme = ()=> root.getAttribute('data-theme') || (systemDark.matches ? 'dark' : 'light');
   const syncPressed = ()=> themeBtn.setAttribute('aria-pressed', currentTheme()==='dark');
-  const applyCalTheme = (t)=>{ try{ if(window.__calSetTheme) window.__calSetTheme(t); }catch(e){} };
   themeBtn.addEventListener('click', ()=>{
     const next = currentTheme()==='dark' ? 'light' : 'dark';
     root.setAttribute('data-theme', next);
     try{ localStorage.setItem('theme', next); }catch(e){}
     syncPressed();
-    applyCalTheme(next);
   });
-  systemDark.addEventListener('change', ()=>{
-    syncPressed();
-    if(!root.getAttribute('data-theme')) applyCalTheme(systemDark.matches ? 'dark' : 'light');
-  });
+  systemDark.addEventListener('change', syncPressed);
   syncPressed();
 
   // Menu mobile
@@ -475,42 +482,6 @@
   document.querySelectorAll('#nav-links a').forEach(a=>a.addEventListener('click', ()=>setMenu(false)));
   document.addEventListener('click', (e)=>{ if(header.classList.contains('nav-open') && !header.contains(e.target)) setMenu(false); });
   document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') setMenu(false); });
-</script>
-
-<!-- Cal.com — caricato SOLO su richiesta dell'utente (privacy-friendly: nessun contatto con Cal.com prima del click) -->
-<script type="text/javascript">
-  var calLoaded = false, calBaseSrc = null;
-  function calTheme(){ return document.documentElement.getAttribute('data-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); }
-  // Renderizza (o ri-renderizza) il calendario col tema e i colori del brand
-  function renderCal(theme){
-    var el = document.getElementById('my-cal-inline'); if (el) el.innerHTML = '';
-    var calBack = document.getElementById('cal-back'); if (calBack) calBack.hidden = true;
-    Cal.ns["studio"]("inline", { elementOrSelector: "#my-cal-inline", config: { layout: "month_view", theme: theme }, calLink: "maria-grazia-80a4no" });
-    Cal.ns["studio"]("ui", {
-      hideEventTypeDetails: false,
-      layout: "month_view",
-      theme: theme,
-      cssVarsPerTheme: { light: { "cal-brand": "#356b77" }, dark: { "cal-brand": "#8fc0cd" } }
-    });
-    calBaseSrc = null;
-    var grab = setInterval(function(){ var f = document.querySelector('#my-cal-inline iframe'); if (f && f.src) { calBaseSrc = f.src; clearInterval(grab); } }, 150);
-  }
-  function loadCal(){
-    if (calLoaded) return; calLoaded = true;
-    var card = document.querySelector('.cal-card'); if (card) card.classList.add('loaded');
-    (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.eu/embed/embed.js", "init");
-    Cal("init", "studio", { origin: "https://cal.eu" });
-    // Pulsante "indietro": torna alla lista dei tipi di visita (handler registrati una sola volta)
-    var calBack = document.getElementById('cal-back');
-    Cal.ns["studio"]("on", { action: "eventTypeSelected", callback: function(){ calBack.hidden = false; } });
-    Cal.ns["studio"]("on", { action: "bookingSuccessful", callback: function(){ calBack.hidden = false; } });
-    calBack.addEventListener('click', function(){ var f = document.querySelector('#my-cal-inline iframe'); if (f && calBaseSrc) f.src = calBaseSrc; calBack.hidden = true; });
-    renderCal(calTheme());
-  }
-  document.getElementById('cal-load').addEventListener('click', loadCal);
-  document.querySelectorAll('.nav-cta, .hero .btn-primary').forEach(function(a){ a.addEventListener('click', loadCal); });
-  // Ri-renderizza col nuovo tema quando l'utente cambia chiaro/scuro
-  window.__calSetTheme = function(t){ if (calLoaded) renderCal(t); };
 </script>
 </body>
 </html>
