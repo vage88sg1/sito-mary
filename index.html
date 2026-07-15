@@ -267,8 +267,19 @@
     background:var(--surface);color:var(--ink);font-size:1rem;cursor:pointer;
     display:flex;align-items:center;justify-content:center;transition:background .2s}
   .book-dialog-close:hover{background:rgba(95,154,170,.12)}
-  .book-dialog-body{flex:1 1 auto;display:flex;overflow:auto}
+  @media(max-width:760px){
+    .book-dialog{padding:0}
+    .book-dialog-box{max-width:none;height:100%;max-height:none;border-radius:0}
+  }
+  .book-dialog-body{flex:1 1 auto;position:relative;display:flex;overflow:auto}
   .book-dialog-iframe{width:100%;height:100%;border:0;background:#fff}
+  .book-dialog-loader{position:absolute;inset:0;display:flex;align-items:center;
+    justify-content:center;background:#fff;transition:opacity .25s ease}
+  .book-dialog-loader[hidden]{display:none}
+  .book-dialog-spinner{width:36px;height:36px;border-radius:50%;
+    border:3px solid rgba(95,154,170,.25);border-top-color:var(--green-deep);
+    animation:book-spin .8s linear infinite}
+  @keyframes book-spin{to{transform:rotate(360deg)}}
 
   /* CONTATTI */
   .contact{display:grid;grid-template-columns:1fr 1fr;gap:48px}
@@ -415,6 +426,7 @@
       <button type="button" id="book-close" class="book-dialog-close" aria-label="Chiudi">✕</button>
     </div>
     <div class="book-dialog-body">
+      <div id="book-loader" class="book-dialog-loader"><div class="book-dialog-spinner"></div></div>
       <iframe id="book-iframe" class="book-dialog-iframe" title="Prenotazione online — Appuntoo"></iframe>
     </div>
   </div>
@@ -485,7 +497,9 @@
   // Dialog di prenotazione a schermo intero (Appuntoo)
   const bookDialog = document.getElementById('book-dialog');
   const bookIframe = document.getElementById('book-iframe');
+  const bookLoader = document.getElementById('book-loader');
   let bookLoaded = false;
+  bookIframe.addEventListener('load', ()=>{ bookLoader.hidden = true; });
   const openBooking = (e)=>{
     if (e) e.preventDefault();
     if (header.classList.contains('nav-open')) setMenu(false);
