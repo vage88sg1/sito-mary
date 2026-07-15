@@ -253,10 +253,13 @@
   .booking .alt{margin-top:20px;font-size:.92rem;color:rgba(255,255,255,.75)}
   .booking .alt a{color:#fff;border-bottom:1px solid rgba(255,255,255,.4)}
 
-  /* Dialog di prenotazione a schermo intero */
-  .book-dialog{position:fixed;inset:0;z-index:200;background:var(--bg);
-    display:flex;flex-direction:column}
+  /* Dialog di prenotazione — box centrato, largo al massimo quanto un telefono */
+  .book-dialog{position:fixed;inset:0;z-index:200;background:rgba(20,30,32,.55);
+    display:flex;align-items:center;justify-content:center;padding:20px}
   .book-dialog[hidden]{display:none}
+  .book-dialog-box{width:100%;max-width:900px;height:90vh;max-height:880px;
+    background:var(--surface);border-radius:16px;box-shadow:var(--shadow);
+    display:flex;flex-direction:column;overflow:hidden}
   .book-dialog-bar{display:flex;align-items:center;justify-content:space-between;
     padding:14px 20px;background:var(--surface);border-bottom:1px solid var(--line);
     font-weight:600;color:var(--ink);flex:none}
@@ -404,14 +407,16 @@
   </div>
 </section>
 
-<!-- Dialog di prenotazione a schermo intero -->
+<!-- Dialog di prenotazione: box centrato, largo al massimo quanto un telefono -->
 <div id="book-dialog" class="book-dialog" hidden>
-  <div class="book-dialog-bar">
-    <span>Prenotazione — Appuntoo</span>
-    <button type="button" id="book-close" class="book-dialog-close" aria-label="Chiudi">✕</button>
-  </div>
-  <div class="book-dialog-body">
-    <iframe id="book-iframe" class="book-dialog-iframe" title="Prenotazione online — Appuntoo"></iframe>
+  <div class="book-dialog-box">
+    <div class="book-dialog-bar">
+      <span>Prenotazione — Appuntoo</span>
+      <button type="button" id="book-close" class="book-dialog-close" aria-label="Chiudi">✕</button>
+    </div>
+    <div class="book-dialog-body">
+      <iframe id="book-iframe" class="book-dialog-iframe" title="Prenotazione online — Appuntoo"></iframe>
+    </div>
   </div>
 </div>
 
@@ -493,6 +498,7 @@
   document.getElementById('book-close').addEventListener('click', closeBooking);
   document.querySelectorAll('.nav-cta, .hero .btn-primary').forEach(a=>a.addEventListener('click', openBooking));
   document.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && !bookDialog.hidden) closeBooking(); });
+  bookDialog.addEventListener('click', (e)=>{ if(e.target===bookDialog) closeBooking(); });
 </script>
 </body>
 </html>
