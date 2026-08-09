@@ -66,7 +66,7 @@
     --green:#5f9aaa;        /* ottanio medio del marchio */
     --green-deep:#356b77;   /* ottanio profondo */
     --cream:#eff5f5;        /* testo chiaro su ottanio */
-    --gold:#4a8593;         /* onda / accento */
+    --gold:#3f6f7d;         /* accento etichette (contrasto AA su chiaro) */
     --line:#d7e6e9;
     --shadow:0 10px 30px -12px rgba(40,59,64,.18);
     --radius:16px;
@@ -75,7 +75,7 @@
     /* superfici/colori a tema */
     --name-1:#356b77;       /* "Maria Grazia" */
     --name-2:#5f9aaa;       /* "Grosso" */
-    --sub:#83adba;          /* sottotitolo */
+    --sub:#4f7280;          /* sottotitolo (contrasto AA su chiaro) */
     --header-bg:rgba(244,250,250,.82);
     --hero-1:#e2eff1; --hero-2:#eff5f5; --hero-3:#e6f1f3;
     --portrait-1:#d7e8eb; --portrait-2:#e3eef0;
@@ -128,10 +128,15 @@
     color:var(--ink);background:var(--bg);line-height:1.65;-webkit-font-smoothing:antialiased;
     transition:background .3s ease,color .3s ease;
   }
-  h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.12;letter-spacing:0}
+  h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.12;letter-spacing:0;text-wrap:balance}
   .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
   a{color:inherit;text-decoration:none}
-  img{display:block;max-width:100%}
+  img{display:block;max-width:100%;height:auto}
+  /* Focus visibile da tastiera */
+  a:focus-visible,button:focus-visible{outline:2px solid var(--green-deep);outline-offset:3px;border-radius:6px}
+  .btn:focus-visible,.nav-cta:focus-visible,.theme-toggle:focus-visible,
+  .book-dialog-close:focus-visible{border-radius:999px}
+  .ico svg,.card .ico svg{display:block}
 
   /* NAV */
   header{position:sticky;top:0;z-index:50;background:var(--header-bg);
@@ -149,10 +154,11 @@
   .nav-cta{background:var(--green);color:#fff!important;padding:9px 18px;border-radius:999px;
     font-size:.9rem;font-weight:600;transition:transform .2s,box-shadow .2s}
   .nav-cta:hover{transform:translateY(-1px);box-shadow:0 8px 18px -8px rgba(95,154,170,.75)}
-  .menu-btn{display:none;background:none;border:0;cursor:pointer;color:var(--ink);font-size:1.4rem;line-height:1;padding:6px}
+  .menu-btn{display:none;background:none;border:0;cursor:pointer;color:var(--ink);font-size:1.4rem;line-height:1;
+    min-width:44px;min-height:44px;align-items:center;justify-content:center}
   /* Toggle tema */
   .theme-toggle{display:inline-flex;align-items:center;justify-content:center;flex:none;
-    width:40px;height:40px;border-radius:999px;border:1px solid var(--line);background:transparent;
+    width:44px;height:44px;border-radius:999px;border:1px solid var(--line);background:transparent;
     color:var(--green-deep);cursor:pointer;transition:color .2s,border-color .2s,background .2s}
   .theme-toggle:hover{background:rgba(95,154,170,.12)}
   .theme-toggle svg{width:19px;height:19px;display:block}
@@ -173,7 +179,7 @@
   }
   @media(max-width:760px){
     .bname em{display:none}
-    .menu-btn{display:block}
+    .menu-btn{display:inline-flex}
     .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;
       align-items:stretch;gap:0;background:var(--surface);border-bottom:1px solid var(--line);
       padding:8px 24px 18px;box-shadow:var(--shadow)}
@@ -263,7 +269,7 @@
   .book-dialog-bar{display:flex;align-items:center;justify-content:space-between;
     padding:14px 20px;background:var(--surface);border-bottom:1px solid var(--line);
     font-weight:600;color:var(--ink);flex:none}
-  .book-dialog-close{width:38px;height:38px;border-radius:999px;border:1px solid var(--line);
+  .book-dialog-close{width:44px;height:44px;border-radius:999px;border:1px solid var(--line);
     background:var(--surface);color:var(--ink);font-size:1rem;cursor:pointer;
     display:flex;align-items:center;justify-content:center;transition:background .2s}
   .book-dialog-close:hover{background:rgba(95,154,170,.12)}
@@ -339,8 +345,8 @@
 <!-- HERO -->
 <div class="hero" id="top">
   <div class="wrap">
-    <img class="hero-logo logo-light" src="assets/logo/logo-primario.png?v=11" alt="Dott.ssa Maria Grazia Grosso — Psichiatra">
-    <img class="hero-logo logo-dark" src="assets/logo/logo-primario-dark.png?v=11" alt="" aria-hidden="true">
+    <img class="hero-logo logo-light" src="assets/logo/logo-primario.png?v=11" alt="Dott.ssa Maria Grazia Grosso — Psichiatra" width="900" height="503">
+    <img class="hero-logo logo-dark" src="assets/logo/logo-primario-dark.png?v=11" alt="" aria-hidden="true" width="900" height="503">
     <h1>Uno spazio sicuro per ritrovare il proprio equilibrio</h1>
     <p class="lead">Ascolto, competenza e riservatezza al centro di ogni percorso. Visite psichiatriche e percorsi di psicoterapia per adulti, in studio a Pisa e online.</p>
     <div class="btn-row">
@@ -379,12 +385,12 @@
       <p class="lead-muted">Un supporto specialistico per il benessere mentale, con percorsi personalizzati su ogni esigenza.</p>
     </div>
     <div class="grid">
-      <div class="card reveal"><div class="ico">◍</div><h3>Ansia e attacchi di panico</h3><p>[Valutazione e trattamento dei disturbi d'ansia, fobie e attacchi di panico.]</p></div>
-      <div class="card reveal"><div class="ico">◑</div><h3>Depressione e umore</h3><p>[Cura della depressione e dei disturbi dell'umore, con percorsi su misura.]</p></div>
-      <div class="card reveal"><div class="ico">☾</div><h3>Disturbi del sonno</h3><p>[Insonnia e alterazioni del sonno legate a stress o ansia.]</p></div>
-      <div class="card reveal"><div class="ico">❋</div><h3>Stress e burnout</h3><p>[Supporto per stress cronico, esaurimento e difficoltà lavorative.]</p></div>
-      <div class="card reveal"><div class="ico">◈</div><h3>Disturbi ossessivi</h3><p>[Diagnosi e trattamento del disturbo ossessivo-compulsivo.]</p></div>
-      <div class="card reveal"><div class="ico">♡</div><h3>Supporto nelle fasi di vita</h3><p>[Accompagnamento in cambiamenti, lutti e momenti di difficoltà.]</p></div>
+      <div class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div><h3>Ansia e attacchi di panico</h3><p>[Valutazione e trattamento dei disturbi d'ansia, fobie e attacchi di panico.]</p></div>
+      <div class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg></div><h3>Depressione e umore</h3><p>[Cura della depressione e dei disturbi dell'umore, con percorsi su misura.]</p></div>
+      <div class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></div><h3>Disturbi del sonno</h3><p>[Insonnia e alterazioni del sonno legate a stress o ansia.]</p></div>
+      <div class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><h3>Stress e burnout</h3><p>[Supporto per stress cronico, esaurimento e difficoltà lavorative.]</p></div>
+      <div class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 21H3v-5"/></svg></div><h3>Disturbi ossessivi</h3><p>[Diagnosi e trattamento del disturbo ossessivo-compulsivo.]</p></div>
+      <div class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><h3>Supporto nelle fasi di vita</h3><p>[Accompagnamento in cambiamenti, lutti e momenti di difficoltà.]</p></div>
     </div>
   </div>
 </section>
@@ -419,7 +425,7 @@
 </section>
 
 <!-- Dialog di prenotazione: box centrato, largo al massimo quanto un telefono -->
-<div id="book-dialog" class="book-dialog" hidden>
+<div id="book-dialog" class="book-dialog" role="dialog" aria-modal="true" aria-label="Prenotazione online — Appuntoo" hidden>
   <div class="book-dialog-box">
     <div class="book-dialog-bar">
       <span>Prenotazione — Appuntoo</span>
@@ -441,10 +447,10 @@
     </div>
     <div class="contact" style="margin-top:38px">
       <div class="reveal">
-        <div class="info-item"><div class="ico">⌖</div><div><h3>Indirizzo</h3><p>[Via Esempio 00, 56100 Pisa (PI)]</p></div></div>
-        <div class="info-item"><div class="ico">✆</div><div><h3>Telefono</h3><p>[+39 000 000 0000]</p></div></div>
-        <div class="info-item"><div class="ico">✉</div><div><h3>Email</h3><p>[email@esempio.it]</p></div></div>
-        <div class="info-item"><div class="ico">◷</div><div><h3>Orari</h3><p>[Lun–Ven 9:00–19:00 · su appuntamento]</p></div></div>
+        <div class="info-item"><div class="ico"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><h3>Indirizzo</h3><p>[Via Esempio 00, 56100 Pisa (PI)]</p></div></div>
+        <div class="info-item"><div class="ico"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><div><h3>Telefono</h3><p>[+39 000 000 0000]</p></div></div>
+        <div class="info-item"><div class="ico"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-10 5L2 7"/></svg></div><div><h3>Email</h3><p>[email@esempio.it]</p></div></div>
+        <div class="info-item"><div class="ico"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><h3>Orari</h3><p>[Lun–Ven 9:00–19:00 · su appuntamento]</p></div></div>
       </div>
       <!-- Per la mappa: incolla qui l'embed di Google Maps dello studio (Condividi → Incorpora una mappa). -->
       <div class="map reveal">[ Qui puoi incorporare una mappa Google<br>dello studio — basta incollare il codice embed ]</div>
@@ -455,8 +461,8 @@
 <footer>
   <div class="wrap">
     <div class="foot">
-      <img class="foot-logo logo-light" src="assets/logo/lockup-orizzontale.png?v=11" alt="Dott.ssa Maria Grazia Grosso · Psichiatra · Psicoterapeuta">
-      <img class="foot-logo logo-dark" src="assets/logo/lockup-orizzontale-dark.png?v=11" alt="" aria-hidden="true">
+      <img class="foot-logo logo-light" src="assets/logo/lockup-orizzontale.png?v=11" alt="Dott.ssa Maria Grazia Grosso · Psichiatra · Psicoterapeuta" width="607" height="170">
+      <img class="foot-logo logo-dark" src="assets/logo/lockup-orizzontale-dark.png?v=11" alt="" aria-hidden="true" width="607" height="170">
       <div>© <span id="yr"></span> Dott.ssa Maria Grazia Grosso · P.IVA [00000000000]</div>
       <div><a href="privacy.html">Privacy</a> · Iscr. Ordine dei Medici di Pisa n. [00000]</div>
     </div>
@@ -498,16 +504,21 @@
   const bookDialog = document.getElementById('book-dialog');
   const bookIframe = document.getElementById('book-iframe');
   const bookLoader = document.getElementById('book-loader');
-  let bookLoaded = false;
+  let bookLoaded = false, bookOpener = null;
   bookIframe.addEventListener('load', ()=>{ bookLoader.hidden = true; });
   const openBooking = (e)=>{
     if (e) e.preventDefault();
     if (header.classList.contains('nav-open')) setMenu(false);
     if (!bookLoaded) { bookIframe.src = 'https://appuntoo.com/prenota/studio-di-maria-grazia-grosso/psichiatra/pisa'; bookLoaded = true; }
+    bookOpener = document.activeElement;
     bookDialog.hidden = false;
     document.body.style.overflow = 'hidden';
+    document.getElementById('book-close').focus();
   };
-  const closeBooking = ()=>{ bookDialog.hidden = true; document.body.style.overflow = ''; };
+  const closeBooking = ()=>{
+    bookDialog.hidden = true; document.body.style.overflow = '';
+    if (bookOpener && bookOpener.focus) bookOpener.focus();
+  };
   document.getElementById('book-open').addEventListener('click', openBooking);
   document.getElementById('book-close').addEventListener('click', closeBooking);
   document.querySelectorAll('.nav-cta, .hero .btn-primary').forEach(a=>a.addEventListener('click', openBooking));
