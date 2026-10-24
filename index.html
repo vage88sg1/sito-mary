@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <!--
-  SITO VETRINA — DOTT.SSA MARIA GRAZIA GROSSO · Psichiatra e Psicoterapeuta (Pisa)
+  SITO VETRINA — DOTT.SSA MARIA GRAZIA GROSSO · Psichiatra e Psicoterapeuta (Belvedere Marittimo, CS)
   Logo ufficiale (PNG ottanio in /assets/logo). Palette ottanio: #356b77 / #5f9aaa. Font: Cormorant Garamond + Mulish.
-  Segnaposto [tra parentesi]: numero Ordine, contatti, indirizzo, orari, P.IVA, foto.
+  Contenuti aggiornati dalle risposte della dottoressa. Restano da confermare email, Ordine e P.IVA.
   Prenotazioni: link Appuntoo con dialog nativo (max 900px su desktop, tutto schermo su mobile), caricato solo al click.
 -->
 <html lang="it">
@@ -11,15 +11,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Applica il tema salvato prima del render per evitare il flash -->
 <script>(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
-<title>Dott.ssa Maria Grazia Grosso — Psichiatra e Psicoterapeuta a Pisa</title>
-<meta name="description" content="Dott.ssa Maria Grazia Grosso, medico specialista in Psichiatria e psicoterapeuta a Pisa. Visite psichiatriche e percorsi di psicoterapia per adulti, in studio e online.">
+<title>Dott.ssa Maria Grazia Grosso — Psichiatra e Psicoterapeuta a Belvedere Marittimo</title>
+<meta name="description" content="Dott.ssa Maria Grazia Grosso, medico psichiatra e psicoterapeuta. Visite per adulti a Belvedere Marittimo (CS), con un percorso di cura personalizzato.">
 <!-- Sito non ancora pubblico: escluso dall'indicizzazione. Rimuovere prima del lancio. -->
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#356b77">
 
 <!-- Open Graph -->
-<meta property="og:title" content="Dott.ssa Maria Grazia Grosso — Psichiatra e Psicoterapeuta a Pisa">
-<meta property="og:description" content="Uno spazio sicuro per ritrovare il proprio equilibrio. Visite psichiatriche e psicoterapia per adulti, in studio a Pisa e online.">
+<meta property="og:title" content="Dott.ssa Maria Grazia Grosso — Psichiatra e Psicoterapeuta a Belvedere Marittimo">
+<meta property="og:description" content="Ascolto e attenzione alla persona. Visite psichiatriche per adulti in studio a Belvedere Marittimo (CS), con un percorso di cura personalizzato.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="it_IT">
 <meta property="og:image" content="assets/logo/versione-su-colore.png?v=11">
@@ -240,7 +240,9 @@
   .portrait{aspect-ratio:3/4;border-radius:var(--radius);background:
     linear-gradient(160deg,var(--portrait-1),var(--portrait-2));display:flex;align-items:center;justify-content:center;
     color:var(--muted);font-size:.85rem;text-align:center;padding:20px;box-shadow:var(--shadow);border:1px solid var(--line)}
-  .portrait img{width:100%;height:100%;object-fit:cover;border-radius:var(--radius)}
+  .portrait img{width:160px;height:160px;object-fit:contain}
+  .about .lead-muted + .lead-muted{margin-top:14px}
+  .about h3{font-size:1.3rem;margin-top:24px}
   .about ul{list-style:none;margin-top:20px;display:grid;gap:10px}
   .about li{padding-left:26px;position:relative;color:var(--muted)}
   .about li::before{content:"";position:absolute;left:0;top:11px;width:9px;height:9px;border-radius:50%;background:var(--green)}
@@ -265,6 +267,8 @@
     display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1.15rem;font-weight:600;box-shadow:var(--shadow)}
   .step h3{font-size:1.22rem;margin:8px 0;font-weight:600}
   .step p{color:var(--muted);font-size:.94rem}
+  .step p + p{margin-top:12px}
+  .step strong{color:var(--ink);font-weight:700}
 
   /* PRENOTAZIONE banner */
   .booking{position:relative;overflow:hidden;background:var(--primary);color:#fff;border-radius:24px;
@@ -329,6 +333,9 @@
     min-height:300px;display:flex;align-items:center;justify-content:center;color:var(--muted);
     text-align:center;padding:24px;border:1px solid var(--line);font-size:.9rem}
   .map iframe{width:100%;height:100%;min-height:300px;border:0;display:block}
+  .map h3{font-size:1.6rem;color:var(--green-deep);margin-bottom:12px}
+  .map p{margin-bottom:22px}
+  .info-item a{text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
   @media(max-width:760px){.contact{grid-template-columns:1fr;gap:30px}}
 
   /* FOOTER */
@@ -394,8 +401,8 @@
   <div class="wrap">
     <img class="hero-logo logo-light" src="assets/logo/logo-primario.png?v=11" alt="Dott.ssa Maria Grazia Grosso — Psichiatra" width="900" height="503">
     <img class="hero-logo logo-dark" src="assets/logo/logo-primario-dark.png?v=11" alt="" aria-hidden="true" width="900" height="503">
-    <h1>Uno spazio sicuro per ritrovare il proprio equilibrio</h1>
-    <p class="lead">Ascolto, competenza e riservatezza al centro di ogni percorso. Visite psichiatriche e percorsi di psicoterapia per adulti, in studio a Pisa e online.</p>
+    <h1>Ascolto e attenzione, al centro della cura</h1>
+    <p class="lead">Visite psichiatriche per persone adulte, in studio a Belvedere Marittimo (CS). Un percorso personalizzato, a partire dalla tua storia e dai tuoi bisogni.</p>
     <div class="btn-row">
       <a class="btn btn-primary" data-booking-open href="https://appuntoo.com/prenota/studio-di-maria-grazia-grosso/psichiatra/pisa" target="_blank" rel="noopener noreferrer">Prenota una visita →</a>
       <a class="btn btn-ghost" href="#chi-sono">Scopri di più</a>
@@ -407,16 +414,22 @@
 <section id="chi-sono">
   <div class="wrap">
     <div class="about reveal">
-      <div class="portrait">[ Foto professionale<br>della dottoressa ]</div>
+      <div class="portrait" aria-hidden="true">
+        <img class="logo-light" src="assets/logo/icona-ottanio.png?v=12" alt="" width="160" height="160" loading="lazy">
+        <img class="logo-dark" src="assets/logo/icona-chiara.png?v=12" alt="" width="160" height="160" loading="lazy">
+      </div>
       <div>
         <div class="section-tag">Chi sono</div>
         <h2 class="section-title">Dott.ssa Maria Grazia Grosso</h2>
-        <p class="lead-muted">Sono medico specialista in Psichiatria e psicoterapeuta, e accolgo ogni persona con ascolto, rispetto e senza giudizio. Credo in una cura che guarda all'individuo nella sua interezza — mente, corpo e relazioni — e in un percorso costruito insieme, nel rispetto dei tempi e degli obiettivi di ciascuno. Il mio scopo è offrire uno spazio sicuro in cui sentirsi compresi e ritrovare, passo dopo passo, il proprio equilibrio.</p>
+        <p class="lead-muted">Sono medico psichiatra e psicoterapeuta. Credo che il benessere psichico richieda ascolto, continuità e attenzione alla persona nella sua interezza.</p>
+        <p class="lead-muted">Dopo un'accurata valutazione clinica e diagnostica, propongo interventi psicofarmacologici e/o psicoterapeutici costruiti su misura. Ogni percorso parte dalla storia e dai bisogni specifici della persona.</p>
+        <h3>Formazione</h3>
         <ul>
           <li>Laurea in Medicina e Chirurgia — Università di Pisa, 2022</li>
           <li>Specializzazione in Psichiatria — Università di Pisa, 2026</li>
-          <li>Iscritta all'Ordine dei Medici di Pisa — n. [00000]</li>
-          <li>Approccio integrato e centrato sulla persona, attento alla dimensione biologica, psicologica e relazionale</li>
+          <li>Corso pratico di farmacoterapia psichiatrica — Società di Psichiatria Clinica e Sperimentale della Scuola di Pisa, 2024</li>
+          <li>Master di II livello in Medicina delle Dipendenze — UniCamillus, Roma, percorso 2025–2026</li>
+          <li>Master in Psicoterapia Cognitivo-Comportamentale — Scuola Studi Cognitivi, Milano, percorso 2026–2027</li>
         </ul>
       </div>
     </div>
@@ -429,15 +442,15 @@
     <div class="reveal">
       <div class="section-tag">Aree di intervento</div>
       <h2 class="section-title">In cosa posso aiutarti</h2>
-      <p class="lead-muted">Un supporto specialistico per il benessere mentale, con percorsi personalizzati su ogni esigenza.</p>
+      <p class="lead-muted">Mi rivolgo a persone adulte. Le visite si svolgono in lingua italiana e il percorso di cura viene definito a partire dalla valutazione clinica.</p>
     </div>
     <div class="grid">
-      <div class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div><h3>Ansia e attacchi di panico</h3><p>[Valutazione e trattamento dei disturbi d'ansia, fobie e attacchi di panico.]</p></div>
-      <div class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg></div><h3>Depressione e umore</h3><p>[Cura della depressione e dei disturbi dell'umore, con percorsi su misura.]</p></div>
-      <div class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></div><h3>Disturbi del sonno</h3><p>[Insonnia e alterazioni del sonno legate a stress o ansia.]</p></div>
-      <div class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><h3>Stress e burnout</h3><p>[Supporto per stress cronico, esaurimento e difficoltà lavorative.]</p></div>
-      <div class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 21H3v-5"/></svg></div><h3>Disturbi ossessivi</h3><p>[Diagnosi e trattamento del disturbo ossessivo-compulsivo.]</p></div>
-      <div class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><h3>Supporto nelle fasi di vita</h3><p>[Accompagnamento in cambiamenti, lutti e momenti di difficoltà.]</p></div>
+      <div class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div><h3>Ansia e disturbi dell’umore</h3><p>Disturbi d’ansia, depressione e disturbo bipolare.</p></div>
+      <div class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg></div><h3>Autismo e ADHD</h3><p>Attenzione ai bisogni delle persone adulte con disturbi del neurosviluppo, tra cui autismo e ADHD.</p></div>
+      <div class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></div><h3>DOC e disturbi alimentari</h3><p>Disturbo ossessivo-compulsivo (DOC) e disturbi del comportamento alimentare (DCA).</p></div>
+      <div class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><h3>Psicosi</h3><p>Valutazione clinica e percorso di cura personalizzato per i disturbi psicotici.</p></div>
+      <div class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 21H3v-5"/></svg></div><h3>Uso di sostanze</h3><p>Valutazione e trattamento del disturbo da uso di sostanze.</p></div>
+      <div class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><h3>Salute mentale nell’anziano</h3><p>Psicogeriatria e alterazioni comportamentali associate a malattia di Parkinson, malattia di Alzheimer, demenza vascolare e demenza frontotemporale.</p></div>
     </div>
   </div>
 </section>
@@ -448,13 +461,13 @@
     <div class="reveal">
       <div class="section-tag">Come funziona</div>
       <h2 class="section-title">Cosa aspettarti</h2>
-      <p class="lead-muted">Fare il primo passo è spesso la parte più difficile. Per questo ho reso il percorso semplice e trasparente.</p>
+      <p class="lead-muted">Dalla richiesta di appuntamento agli incontri successivi: le informazioni utili per organizzare la visita. Lo studio riceve solo per visite programmate.</p>
     </div>
     <div class="steps">
-      <div class="step reveal"><h3>Prenoti la visita</h3><p>Scegli giorno e orario online in pochi click, oppure chiamando lo studio.</p></div>
-      <div class="step reveal"><h3>Primo colloquio</h3><p>Un incontro di circa 45–60 minuti per conoscerci e capire insieme le tue esigenze, in studio o in videoconsulto.</p></div>
-      <div class="step reveal"><h3>Percorso condiviso</h3><p>Definiamo insieme un percorso personalizzato, nel pieno rispetto dei tuoi tempi e delle tue scelte.</p></div>
-      <div class="step reveal"><h3>Riservatezza totale</h3><p>Ogni informazione è trattata con la massima discrezione e nel rispetto del segreto professionale.</p></div>
+      <div class="step reveal"><h3>Richiesta e conferma</h3><p>Puoi richiedere un appuntamento su Appuntoo oppure per telefono. La richiesta online deve essere approvata dallo studio: riceverai conferma via email o telefonata entro 24 ore.</p></div>
+      <div class="step reveal"><h3>Prima visita</h3><p><strong>45–60 minuti · 120 €</strong></p><p>È utile portare la documentazione medica precedente, gli esami del sangue recenti e l'elenco dei farmaci che assumi. Puoi farti accompagnare da un familiare.</p></div>
+      <div class="step reveal"><h3>Visite di controllo</h3><p><strong>In studio: 30–45 minuti · 100 €</strong><br><strong>Online: 30–45 minuti · 90 €</strong><br>Il controllo online è da concordare via email.</p><p>Il percorso viene definito in base alla valutazione clinica. Il monitoraggio terapeutico può proseguire anche per telefono ed email.</p></div>
+      <div class="step reveal"><h3>Indicazioni pratiche</h3><p>Il pagamento avviene al termine della visita, in contanti, con carta di credito o bonifico istantaneo. Per disdire un appuntamento è richiesto un preavviso di almeno 48 ore.</p></div>
     </div>
   </div>
 </section>
@@ -464,9 +477,9 @@
   <div class="wrap">
     <div class="booking reveal">
       <h2>Prenota la tua visita</h2>
-      <p>Disponibilità in studio a Pisa e in videoconsulto online. Prenota in pochi click sul portale sicuro di Appuntoo.</p>
+      <p>Richiedi un appuntamento in studio a Belvedere Marittimo tramite Appuntoo. La richiesta è soggetta all'approvazione dello studio, con conferma via email o telefonata entro 24 ore.</p>
       <a class="btn btn-primary" id="book-open" data-booking-open href="https://appuntoo.com/prenota/studio-di-maria-grazia-grosso/psichiatra/pisa" target="_blank" rel="noopener noreferrer">Prenota una visita →</a>
-      <div class="alt">Preferisci il telefono? Chiama il <a href="tel:+39000000000">[+39 000 000 0000]</a> o scrivi a <a href="mailto:email@esempio.it">[email@esempio.it]</a></div>
+      <div class="alt">Preferisci il telefono? Chiama il <a href="tel:+393514030388">351 403 0388</a>, dal lunedì al venerdì, dalle 14:00 alle 16:00.</div>
     </div>
   </div>
 </section>
@@ -502,13 +515,19 @@
     </div>
     <div class="contact" style="margin-top:38px">
       <div class="reveal">
-        <div class="info-item"><div class="ico"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><h3>Indirizzo</h3><p>[Via Esempio 00, 56100 Pisa (PI)]</p></div></div>
-        <div class="info-item"><div class="ico"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><div><h3>Telefono</h3><p>[+39 000 000 0000]</p></div></div>
-        <div class="info-item"><div class="ico"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-10 5L2 7"/></svg></div><div><h3>Email</h3><p>[email@esempio.it]</p></div></div>
-        <div class="info-item"><div class="ico"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><h3>Orari</h3><p>[Lun–Ven 9:00–19:00 · su appuntamento]</p></div></div>
+        <div class="info-item"><div class="ico"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><h3>Indirizzo</h3><p>Via Sant’Antonio 20<br>Belvedere Marittimo (CS)<br>Piano terra, senza barriere</p></div></div>
+        <div class="info-item"><div class="ico"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><div><h3>Telefono</h3><p><a href="tel:+393514030388">351 403 0388</a><br>Dal lunedì al venerdì, 14:00–16:00.<br>Se non posso rispondere, ti ricontatto appena possibile.</p></div></div>
+        <div class="info-item"><div class="ico"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-10 5L2 7"/></svg></div><div><h3>WhatsApp</h3><p><a href="https://wa.me/393514030388" target="_blank" rel="noopener noreferrer">Scrivimi su WhatsApp ↗</a><br>Per comunicazioni non urgenti. Risponderò appena possibile.</p></div></div>
+        <div class="info-item"><div class="ico"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><h3>Visite su appuntamento</h3><p>Si effettuano solo visite programmate. Per concordare giorno e orario, contatta lo studio oppure invia una richiesta su Appuntoo.</p></div></div>
       </div>
-      <!-- Per la mappa: incolla qui l'embed di Google Maps dello studio (Condividi → Incorpora una mappa). -->
-      <div class="map reveal">[ Qui puoi incorporare una mappa Google<br>dello studio — basta incollare il codice embed ]</div>
+      <!-- Il collegamento alla mappa non carica risorse esterne prima del click. -->
+      <div class="map reveal">
+        <div>
+          <h3>Lo studio</h3>
+          <p>Via Sant’Antonio 20<br>Belvedere Marittimo (CS)<br>Piano terra, senza barriere</p>
+          <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Via%20Sant%27Antonio%2020%2C%20Belvedere%20Marittimo%20CS" target="_blank" rel="noopener noreferrer">Apri in Google Maps ↗</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -519,8 +538,8 @@
     <div class="foot">
       <img class="foot-logo logo-light" src="assets/logo/lockup-orizzontale.png?v=11" alt="Dott.ssa Maria Grazia Grosso · Psichiatra · Psicoterapeuta" width="607" height="170">
       <img class="foot-logo logo-dark" src="assets/logo/lockup-orizzontale-dark.png?v=11" alt="" aria-hidden="true" width="607" height="170">
-      <div>© <span id="yr"></span> Dott.ssa Maria Grazia Grosso · P.IVA [00000000000]</div>
-      <div><a href="privacy.html">Privacy</a> · Iscr. Ordine dei Medici di Pisa n. [00000]</div>
+      <div>© <span id="yr"></span> Dott.ssa Maria Grazia Grosso · P.IVA [da confermare]</div>
+      <div><a href="privacy.html">Privacy</a> · [Ordine e numero d'iscrizione da confermare]</div>
     </div>
   </div>
 </footer>
