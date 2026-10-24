@@ -298,18 +298,10 @@
     background:var(--surface);color:var(--ink);font-size:1rem;cursor:pointer;
     display:flex;align-items:center;justify-content:center;transition:background .2s}
   .book-dialog-close:hover{background:rgba(95,154,170,.12)}
-  .book-dialog-tools{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;
-    gap:8px 16px;padding:8px 20px;background:var(--surface);border-bottom:1px solid var(--line);
-    font-size:.88rem;color:var(--muted);flex:none}
-  .book-dialog-tools a{color:var(--green-deep);text-decoration:underline;text-underline-offset:3px;
-    display:inline-flex;align-items:center;min-height:44px}
-  .book-retry{font:inherit;font-weight:600;color:var(--green-deep);background:transparent;
-    border:1px solid var(--line);border-radius:999px;padding:8px 14px;min-height:44px;cursor:pointer}
   @media(max-width:760px){
     .book-dialog{padding:0}
     .book-dialog-box{max-width:none;height:100%;max-height:none;border-radius:0}
     .book-dialog-bar{padding-top:max(14px,env(safe-area-inset-top))}
-    .book-dialog-tools{padding:4px 16px}
   }
   .book-dialog-body{flex:1 1 auto;min-height:0;position:relative;display:flex;overflow:hidden}
   .book-dialog-iframe{display:block;width:100%;height:100%;min-height:0;border:0;background:#fff}
@@ -499,10 +491,6 @@
       <span id="book-title">Prenotazione — Appuntoo</span>
       <button type="button" id="book-close" class="book-dialog-close" aria-label="Chiudi">✕</button>
     </div>
-    <div class="book-dialog-tools">
-      <a href="https://appuntoo.com/prenota/studio-di-maria-grazia-grosso/psichiatra/pisa" target="_blank" rel="noopener noreferrer">Apri in una nuova scheda ↗</a>
-      <button type="button" id="book-retry" class="book-retry">Ricarica</button>
-    </div>
     <p id="book-status" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
     <div id="book-content" class="book-dialog-body" aria-busy="false">
       <div id="book-loader" class="book-dialog-loader" aria-hidden="true">
@@ -644,7 +632,7 @@
     clearBookTimer();
     bookTimer = window.setTimeout(()=>{
       if (bookDialog.open && bookPhase==='loading') {
-        showBookMessage('Il caricamento sta richiedendo più tempo del previsto. È possibile ricaricare la pagina o aprirla in una nuova scheda.', true);
+        showBookMessage('Il caricamento sta richiedendo più tempo del previsto. È possibile attendere oppure chiudere questa finestra e contattare lo studio.', true);
       }
     },12000);
   };
@@ -652,7 +640,7 @@
     clearBookTimer();
     if (!navigator.onLine) {
       bookPhase = 'error';
-      showBookMessage('La connessione non sembra disponibile. Verificare la rete e selezionare Ricarica per riprovare.', false);
+      showBookMessage('La connessione non sembra disponibile. Verificare la rete, chiudere questa finestra e riprovare.', false);
       return;
     }
     bookPhase = 'loading';
@@ -668,12 +656,11 @@
     bookContent.setAttribute('aria-busy','false');
     bookStatus.textContent = 'Pagina di prenotazione caricata.';
     // load conferma il caricamento della pagina, non lo stato interno di Appuntoo.
-    // Il collegamento esterno e Ricarica restano disponibili anche su pagine di errore.
   });
   bookIframe.addEventListener('error', ()=>{
     clearBookTimer();
     bookPhase = 'error';
-    showBookMessage('Non è stato possibile caricare la pagina di prenotazione. È possibile ricaricarla o aprirla in una nuova scheda.', false);
+    showBookMessage('Non è stato possibile caricare la pagina di prenotazione. Chiudere questa finestra e riprovare.', false);
   });
   const openBooking = (e)=>{
     if (typeof bookDialog.showModal!=='function') return;
@@ -700,7 +687,6 @@
     });
   }
   document.getElementById('book-close').addEventListener('click', ()=>bookDialog.close());
-  document.getElementById('book-retry').addEventListener('click', loadBooking);
   bookDialog.addEventListener('close', ()=>{
     clearBookTimer();
     document.body.style.overflow = previousBodyOverflow;
