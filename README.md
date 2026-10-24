@@ -21,7 +21,7 @@ python3 -m http.server 4521
 
 I contenuti sono stati aggiornati sulla base delle risposte della dottoressa al questionario del 24 ottobre 2026. Il sito mantiene il blocco dell'indicizzazione tramite meta robots e `robots.txt`.
 
-Dati professionali confermati: P.IVA `02586370500`, Ordine dei Medici di Pisa n. `07118`. L’email pubblicata, `mariagrazia.gr@gmail.com`, è provvisoria e andrà sostituita quando sarà disponibile quella definitiva. Durate e tariffe sono confermate per la pubblicazione.
+Dati professionali confermati: P.IVA `02586370500`, Ordine dei Medici di Pisa n. `07118`. Email definitiva: `dottoressamg.grosso@gmail.com`. Durate e tariffe sono confermate per la pubblicazione.
 
 Restano da confermare:
 
