@@ -79,10 +79,9 @@
     --sub:#4f7280;          /* sottotitolo (contrasto AA su chiaro) */
     --header-bg:rgba(244,250,250,.82);
     --hero-1:#e2eff1; --hero-2:#eff5f5; --hero-3:#e6f1f3;
+    --hero-art-filter:none; --hero-art-opacity:.65; --hero-art-mobile-opacity:.22;
     --portrait-1:#d7e8eb; --portrait-2:#e3eef0;
     --map-1:#dceaed; --map-2:#e8f1f3;
-    --glow-1:radial-gradient(circle,rgba(95,154,170,.20),transparent 70%);
-    --glow-2:radial-gradient(circle,rgba(141,186,198,.28),transparent 70%);
   }
   /* ——— TEMA SCURO ——— */
   :root[data-theme="dark"]{
@@ -103,10 +102,9 @@
     --sub:#bad2d9;
     --header-bg:rgba(14,23,26,.82);
     --hero-1:#101d21; --hero-2:#0d181b; --hero-3:#0f1e1d;
+    --hero-art-filter:invert(1) hue-rotate(180deg); --hero-art-opacity:.32; --hero-art-mobile-opacity:.22;
     --portrait-1:#1b2c32; --portrait-2:#142025;
     --map-1:#16262c; --map-2:#101b1f;
-    --glow-1:radial-gradient(circle,rgba(95,154,170,.06),transparent 72%);
-    --glow-2:radial-gradient(circle,rgba(143,192,205,.07),transparent 72%);
   }
   /* Tema di sistema scuro, se l'utente non ha forzato il chiaro */
   @media (prefers-color-scheme: dark){
@@ -117,10 +115,9 @@
       --name-1:#7fbbc8; --name-2:#a0c4ce; --sub:#bad2d9;
       --header-bg:rgba(14,23,26,.82);
       --hero-1:#101d21; --hero-2:#0d181b; --hero-3:#0f1e1d;
+      --hero-art-filter:invert(1) hue-rotate(180deg); --hero-art-opacity:.32; --hero-art-mobile-opacity:.22;
       --portrait-1:#1b2c32; --portrait-2:#142025;
       --map-1:#16262c; --map-2:#101b1f;
-      --glow-1:radial-gradient(circle,rgba(95,154,170,.06),transparent 72%);
-      --glow-2:radial-gradient(circle,rgba(143,192,205,.07),transparent 72%);
     }
   }
   *{box-sizing:border-box;margin:0;padding:0}
@@ -202,10 +199,19 @@
   /* HERO */
   .hero{position:relative;overflow:hidden;padding:96px 0 90px;
     background:linear-gradient(160deg,var(--hero-1) 0%,var(--hero-2) 55%,var(--hero-3) 100%)}
-  .hero::before{content:"";position:absolute;width:420px;height:420px;right:-120px;top:-120px;
-    background:var(--glow-1);border-radius:50%}
-  .hero::after{content:"";position:absolute;width:360px;height:360px;left:-100px;bottom:-140px;
-    background:var(--glow-2);border-radius:50%}
+  /* Illustrazione decorativa locale: il centro resta libero per logo e testi. */
+  .hero::before,.hero::after{content:"";position:absolute;inset:0;pointer-events:none;
+    background:url("assets/sfondi/neuroni-organici.webp") center / cover no-repeat;
+    opacity:var(--hero-art-opacity);filter:var(--hero-art-filter)}
+  .hero::after{display:none}
+  @media(max-width:900px){
+    .hero::before,.hero::after{width:50%;background-size:auto 100%;
+      opacity:var(--hero-art-mobile-opacity)}
+    .hero::before{right:auto;background-position:left center;
+      mask-image:linear-gradient(to right,#000,transparent)}
+    .hero::after{display:block;left:auto;background-position:right center;
+      mask-image:linear-gradient(to left,#000,transparent)}
+  }
   .hero .wrap{position:relative;z-index:2;max-width:780px;text-align:center}
   .hero .hero-logo{width:440px;max-width:88%;margin:0 auto 28px}
   .hero p.lead{margin-left:auto;margin-right:auto}
