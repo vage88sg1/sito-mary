@@ -361,7 +361,9 @@
   .map-credit{display:block;margin-top:16px;font-size:.8rem}
   .map-credit a{text-decoration:underline;text-underline-offset:3px}
   .info-item a{text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
-  .info-item .ico img{width:24px;height:24px;object-fit:contain}
+  .whatsapp-mark{display:block;width:24px;height:24px;background:currentColor;
+    -webkit-mask:url("assets/icons/whatsapp-glyph-green.svg") center / contain no-repeat;
+    mask:url("assets/icons/whatsapp-glyph-green.svg") center / contain no-repeat}
   @media(max-width:760px){.contact{grid-template-columns:1fr;gap:30px}}
   @media(max-width:600px){
     .booking{padding:32px 20px}
@@ -549,7 +551,7 @@
         <div class="info-item"><div class="ico"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><h3>Indirizzo</h3><p>Via Sant’Antonio 20<br>Belvedere Marittimo (CS)<br>Piano terra, senza barriere architettoniche</p></div></div>
         <div class="info-item"><div class="ico"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><div><h3>Telefono</h3><p><a href="tel:+393514030388">351 403 0388</a><br>Dal lunedì al venerdì, dalle <span class="nowrap">14:00</span> alle <span class="nowrap">16:00</span>.<br>In caso di mancata risposta, il paziente sarà ricontattato appena possibile.</p></div></div>
         <div class="info-item"><div class="ico"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-10 5L2 7"/></svg></div><div><h3>Email</h3><p><a href="mailto:dottoressamg.grosso@gmail.com" class="email-link">dottoressamg.grosso<wbr>@gmail.com</a><br>Per richiedere un appuntamento, concordare le visite di controllo online e inviare comunicazioni non urgenti.</p></div></div>
-        <div class="info-item"><div class="ico"><img src="assets/icons/whatsapp-glyph-green.svg" alt="" aria-hidden="true" width="24" height="24" loading="lazy"></div><div><h3>WhatsApp</h3><p><a href="https://wa.me/393514030388" target="_blank" rel="noopener noreferrer">Contatto WhatsApp ↗</a><br>Per prenotare le visite online e per comunicazioni non urgenti. Le risposte vengono fornite appena possibile.</p></div></div>
+        <div class="info-item"><div class="ico"><span class="whatsapp-mark" aria-hidden="true"></span></div><div><h3>WhatsApp</h3><p><a href="https://wa.me/393514030388" target="_blank" rel="noopener noreferrer">Contatto WhatsApp ↗</a><br>Per prenotare le visite online e per comunicazioni non urgenti. Le risposte vengono fornite appena possibile.</p></div></div>
         <div class="info-item"><div class="ico"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><h3>Visite su appuntamento</h3><p>Si riceve esclusivamente su appuntamento. Le visite possono essere richieste tramite Appuntoo, telefonicamente o via email.</p></div></div>
       </div>
       <!-- Mappa statica locale: nessun iframe, cookie o collegamento a server di mappe prima del click. -->
