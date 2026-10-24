@@ -30,7 +30,7 @@ Restano da confermare:
 
 La pagina **Privacy** riguarda esclusivamente navigazione e funzionamento del sito (hosting, tema, mappa e apertura dei servizi esterni). Prenotazioni, comunicazioni con lo studio e attività clinica saranno disciplinate da un'informativa separata, come indicato dall'utente. Appuntoo è considerato già verificato.
 
-La sezione "Chi sono" usa il marchio esistente nello spazio della foto, che per ora non è prevista. La mappa OpenStreetMap è un'immagine locale (`assets/mappe/studio-belvedere-osm.jpg`) con attribuzione e link a Google Maps: non carica iframe, cookie o risorse da servizi di mappe esterni. Google Maps, OpenStreetMap e WhatsApp si aprono soltanto su richiesta tramite link esterni.
+La sezione "Chi sono" presenta biografia e formazione affiancate su desktop e in sequenza su mobile, senza riquadro fotografico. La mappa OpenStreetMap è un'immagine locale (`assets/mappe/studio-belvedere-osm.jpg`) con attribuzione e link a Google Maps: non carica iframe, cookie o risorse da servizi di mappe esterni. Google Maps, OpenStreetMap e WhatsApp si aprono soltanto su richiesta tramite link esterni.
 
 Lo sfondo iniziale usa l’illustrazione approvata dei neuroni stilizzati (`assets/sfondi/neuroni-organici.webp`), ospitata localmente e ottimizzata in WebP. Intensità, tonalità e posizione si adattano al tema e allo schermo; l’immagine è decorativa e non contiene testi o loghi.
 
