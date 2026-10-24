@@ -29,6 +29,8 @@ Restano da confermare:
 - Profilo **Appuntoo**: quello collegato è temporaneamente disattivato e contiene ancora `/pisa`. Verificare sede, prestazioni e tariffe prima di riattivarlo; non ricostruire un nuovo URL per ipotesi.
 - Informativa **Privacy**, ancora in bozza con dati e aspetti del trattamento da completare e validare.
 
-La sezione "Chi sono" usa il marchio esistente nello spazio della foto, che per ora non è prevista. Google Maps e WhatsApp si aprono soltanto su richiesta tramite link esterni.
+La sezione "Chi sono" usa il marchio esistente nello spazio della foto, che per ora non è prevista. La mappa OpenStreetMap è un'immagine locale (`assets/mappe/studio-belvedere-osm.jpg`) con attribuzione e link a Google Maps: non carica iframe, cookie o risorse da servizi di mappe esterni. Google Maps, OpenStreetMap e WhatsApp si aprono soltanto su richiesta tramite link esterni.
+
+Immagine della mappa e coordinate (`39.617406, 15.858948`) provengono dalla sede di Belvedere Marittimo nel repository [sito-gaetano-grosso](https://github.com/vage88sg1/sito-gaetano-grosso/blob/76457b95decc8ac6760966be8329c297144dbf8b/index.html). Dati cartografici © [OpenStreetMap contributors](https://www.openstreetmap.org/copyright).
 
 > I materiali sorgente del brand, i questionari e le note di revisione sono conservati in `_sources/`, esclusa dal repo tramite `.gitignore`.
