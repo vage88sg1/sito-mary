@@ -27,7 +27,8 @@ Restano da confermare:
 
 - Stato di conseguimento dei master: sono riportati come percorsi formativi con le date fornite.
 - Profilo **Appuntoo**: quello collegato è temporaneamente disattivato e contiene ancora `/pisa`. Verificare sede, prestazioni e tariffe prima di riattivarlo; non ricostruire un nuovo URL per ipotesi.
-- Informativa **Privacy**, ancora in bozza con dati e aspetti del trattamento da completare e validare.
+
+La pagina **Privacy** riguarda esclusivamente navigazione e funzionamento del sito (hosting, tema, mappa e apertura dei servizi esterni). Prenotazioni, comunicazioni con lo studio e attività clinica saranno disciplinate da un'informativa separata, come indicato dall'utente. Appuntoo è considerato già verificato.
 
 La sezione "Chi sono" usa il marchio esistente nello spazio della foto, che per ora non è prevista. La mappa OpenStreetMap è un'immagine locale (`assets/mappe/studio-belvedere-osm.jpg`) con attribuzione e link a Google Maps: non carica iframe, cookie o risorse da servizi di mappe esterni. Google Maps, OpenStreetMap e WhatsApp si aprono soltanto su richiesta tramite link esterni.
 
