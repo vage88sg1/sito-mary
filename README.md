@@ -21,9 +21,10 @@ python3 -m http.server 4521
 
 I contenuti sono stati aggiornati sulla base delle risposte della dottoressa al questionario del 24 ottobre 2026. Il sito mantiene il blocco dell'indicizzazione tramite meta robots e `robots.txt`.
 
+Dati professionali confermati: P.IVA `02586370500`, Ordine dei Medici di Pisa n. `07118`. L’email pubblicata, `mariagrazia.gr@gmail.com`, è provvisoria e andrà sostituita quando sarà disponibile quella definitiva. Durate e tariffe sono confermate per la pubblicazione.
+
 Restano da confermare:
 
-- Email professionale, provincia e numero d'iscrizione all'Ordine, partita IVA.
 - Stato di conseguimento dei master: sono riportati come percorsi formativi con le date fornite.
 - Profilo **Appuntoo**: quello collegato è temporaneamente disattivato e contiene ancora `/pisa`. Verificare sede, prestazioni e tariffe prima di riattivarlo; non ricostruire un nuovo URL per ipotesi.
 - Informativa **Privacy**, ancora in bozza con dati e aspetti del trattamento da completare e validare.
