@@ -34,6 +34,8 @@ La sezione "Chi sono" presenta biografia e formazione affiancate su desktop e in
 
 Lo sfondo iniziale usa l’illustrazione approvata dei neuroni stilizzati (`assets/sfondi/neuroni-organici.webp`), ospitata localmente e ottimizzata in WebP. Intensità, tonalità e posizione si adattano al tema e allo schermo; l’immagine è decorativa e non contiene testi o loghi.
 
+La revisione responsive protegge le unità numeriche (tariffe, durate, anni, telefono e dati professionali), separa durata e prezzo nelle schede visita e mantiene il menu entro l’altezza disponibile. Il simbolo WhatsApp è l’asset ufficiale Meta, ospitato localmente; provenienza e condizioni d’uso in `assets/icons/WHATSAPP-SOURCE.md`.
+
 Immagine della mappa e coordinate (`39.617406, 15.858948`) provengono dalla sede di Belvedere Marittimo nel repository [sito-gaetano-grosso](https://github.com/vage88sg1/sito-gaetano-grosso/blob/76457b95decc8ac6760966be8329c297144dbf8b/index.html). Dati cartografici © [OpenStreetMap contributors](https://www.openstreetmap.org/copyright).
 
 > I materiali sorgente del brand, i questionari e le note di revisione sono conservati in `_sources/`, esclusa dal repo tramite `.gitignore`.

@@ -75,7 +75,7 @@
     --sans:'Mulish',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     /* superfici/colori a tema */
     --name-1:#356b77;       /* "Maria Grazia" */
-    --name-2:#5f9aaa;       /* "Grosso" */
+    --name-2:#397987;       /* "Grosso": ottanio leggibile anche nel testo piccolo */
     --sub:#4f7280;          /* sottotitolo (contrasto AA su chiaro) */
     --header-bg:rgba(244,250,250,.82);
     --hero-1:#e2eff1; --hero-2:#eff5f5; --hero-3:#e6f1f3;
@@ -118,7 +118,7 @@
     }
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth;scroll-padding-top:90px}
+  html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-height,74px) + 16px)}
   @media(min-width:1024px){html{scrollbar-gutter:stable}}
   body{
     font-family:var(--sans);
@@ -128,6 +128,9 @@
   h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.12;letter-spacing:0;text-wrap:balance}
   .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
   a{color:inherit;text-decoration:none}
+  .nowrap,a[href^="tel:"]{white-space:nowrap}
+  .email-link{overflow-wrap:anywhere}
+  p,li{overflow-wrap:break-word}
   img{display:block;max-width:100%;height:auto}
   /* Focus visibile da tastiera */
   a:focus-visible,button:focus-visible{outline:2px solid var(--green-deep);outline-offset:3px;border-radius:6px}
@@ -145,20 +148,20 @@
   /* NAV */
   header{position:sticky;top:0;z-index:50;background:var(--header-bg);
     backdrop-filter:saturate(160%) blur(12px);border-bottom:1px solid var(--line);transition:background .3s,border-color .3s}
-  nav{display:flex;align-items:center;justify-content:space-between;height:74px;gap:18px}
-  .brand{display:flex;align-items:center;gap:13px}
-  .brand img{width:42px;height:42px;object-fit:contain}
-  .bname{display:flex;flex-direction:column;line-height:1.12}
+  nav{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;min-height:74px;gap:8px 18px;padding:10px 0}
+  .brand{display:flex;align-items:center;gap:13px;flex-shrink:0;max-width:100%}
+  .brand img{width:42px;height:42px;object-fit:contain;flex:none}
+  .bname{display:flex;flex-direction:column;line-height:1.12;min-width:0}
   .bname strong{font-family:var(--serif);font-style:italic;font-size:1.3rem;font-weight:500;color:var(--name-1);letter-spacing:.01em}
   .bname strong span{color:var(--name-2)}
   .bname em{font-style:normal;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--sub);margin-top:3px}
-  .nav-links{display:flex;gap:28px;align-items:center}
-  .nav-links a{font-size:.93rem;color:var(--muted);transition:color .2s}
+  .nav-links{display:flex;flex-wrap:wrap;min-width:0;gap:12px 28px;align-items:center;flex:1;justify-content:flex-end}
+  .nav-links a{font-size:.93rem;color:var(--muted);transition:color .2s;white-space:nowrap}
   .nav-links a:hover{color:var(--green-deep)}
   .nav-cta{background:var(--primary);color:#fff!important;padding:9px 18px;border-radius:999px;
     font-size:.9rem;font-weight:600;transition:transform .2s,box-shadow .2s}
   .nav-cta:hover{transform:translateY(-1px);box-shadow:0 8px 18px -8px rgba(95,154,170,.75)}
-  .menu-btn{display:none;background:none;border:0;cursor:pointer;color:var(--ink);font-size:1.4rem;line-height:1;
+  .menu-btn{display:none;flex:none;background:none;border:0;cursor:pointer;color:var(--ink);font-size:1.4rem;line-height:1;
     min-width:44px;min-height:44px;align-items:center;justify-content:center}
   /* Toggle tema */
   .theme-toggle{display:inline-flex;align-items:center;justify-content:center;flex:none;
@@ -183,15 +186,23 @@
   }
   @media(max-width:1023px){
     .menu-btn{display:inline-flex}
-    .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;
-      align-items:stretch;gap:0;background:var(--surface);border-bottom:1px solid var(--line);
-      padding:8px 24px 18px;box-shadow:var(--shadow)}
+    .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;flex-wrap:nowrap;
+      align-items:stretch;justify-content:flex-start;gap:0;background:var(--surface);border-bottom:1px solid var(--line);
+      padding:8px 24px 18px;box-shadow:var(--shadow);
+      max-height:calc(100dvh - var(--nav-height,74px));overflow-y:auto;overscroll-behavior:contain}
     header.nav-open .nav-links{display:flex}
-    .nav-links a{padding:13px 2px;font-size:1.02rem;border-bottom:1px solid var(--line)}
+    .nav-links a{flex:none;padding:13px 2px;font-size:1.02rem;border-bottom:1px solid var(--line)}
     .nav-links a:last-child{border-bottom:0}
     .nav-cta{align-self:stretch;text-align:center;margin-top:16px;padding:14px 22px;font-size:1rem}
   }
   @media(max-width:760px){.bname em{display:none}}
+  @media(max-width:600px){
+    nav{gap:8px 12px}
+    .brand{gap:8px;margin-right:auto}
+    .brand img{width:36px;height:36px}
+    .bname strong{font-size:1.25rem}
+    .bname strong span{display:block}
+  }
 
   /* HERO */
   .hero{position:relative;overflow:hidden;padding:96px 0 90px;
@@ -215,8 +226,8 @@
   .hero .btn-row{justify-content:center}
   .eyebrow{display:inline-block;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600;
     color:var(--green-deep);background:rgba(95,154,170,.16);padding:6px 14px;border-radius:999px;margin-bottom:22px}
-  .hero h1{font-size:clamp(2.4rem,5.4vw,3.7rem);margin-bottom:18px;font-weight:600}
-  .hero p.lead{font-size:1.18rem;color:var(--muted);max-width:620px;margin-bottom:34px}
+  .hero h1{font-size:clamp(2.4rem,5.4vw,3.7rem);margin-bottom:18px;font-weight:600;overflow-wrap:break-word;hyphens:auto}
+  .hero p.lead{font-size:1.18rem;color:var(--ink);max-width:620px;margin-bottom:34px}
   @media(max-width:600px){
     .hero{padding:40px 0 56px}
     .hero .hero-logo{margin-bottom:20px}
@@ -224,7 +235,8 @@
     .hero p.lead{margin-bottom:22px}
   }
   .btn-row{display:flex;gap:14px;flex-wrap:wrap}
-  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 26px;border-radius:999px;
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 22px;border-radius:999px;
+    max-width:100%;min-height:48px;
     border:0;cursor:pointer;font-family:inherit;font-weight:600;font-size:1rem;line-height:1.2;
     transition:transform .2s,box-shadow .2s,background .2s}
   .btn-primary{background:var(--primary);color:#fff}
@@ -242,6 +254,7 @@
   .about .section-title{margin-bottom:30px}
   .about-content{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:54px;align-items:start}
   .about-education{border-left:1px solid var(--line);padding-left:32px}
+  .about-content>div,.about li{min-width:0}
   .about .lead-muted + .lead-muted{margin-top:14px}
   .about h3{font-size:1.5rem}
   .about ul{list-style:none;margin-top:18px;display:grid;gap:10px}
@@ -264,7 +277,7 @@
   .card p{color:var(--muted);font-size:.95rem}
 
   /* COME FUNZIONA */
-  .steps{counter-reset:s;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px;margin-top:46px}
+  .steps{counter-reset:s;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 22px;margin-top:46px}
   .step{position:relative;padding:34px 24px 24px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius)}
   .step::before{counter-increment:s;content:counter(s);position:absolute;top:-18px;left:24px;
     width:38px;height:38px;border-radius:50%;background:var(--primary);color:#fff;
@@ -274,6 +287,13 @@
   .step p + p{margin-top:12px}
   .step a{text-decoration:underline;text-underline-offset:3px}
   .step strong{color:var(--ink);font-weight:700}
+  .visit-meta{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:4px 16px}
+  .visit-meta>*{white-space:nowrap}
+  .step .visit-format{color:var(--ink);font-weight:600;margin-bottom:4px}
+  .step .visit-format + .visit-meta{margin-top:0}
+  .visit-option + .visit-option{border-top:1px solid var(--line);margin-top:14px;padding-top:14px}
+  .visit-options + p{margin-top:16px}
+  @media(max-width:760px){.steps{grid-template-columns:minmax(0,1fr)}}
 
   /* PRENOTAZIONE banner */
   .booking{position:relative;overflow:hidden;background:var(--primary);color:#fff;border-radius:24px;
@@ -284,6 +304,8 @@
   .booking .btn-primary:hover{box-shadow:0 14px 26px -10px rgba(0,0,0,.4)}
   .booking .alt{margin-top:20px;font-size:.92rem;color:#fff}
   .booking .alt a{color:#fff;border-bottom:1px solid rgba(255,255,255,.4);overflow-wrap:anywhere}
+  .booking .alt p{font-size:inherit;line-height:1.65;margin:0}
+  .booking .alt p + p{margin-top:10px}
   .booking a:focus-visible{outline-color:#fff;outline-offset:5px}
 
   /* Dialog nativo: focus confinato, sfondo inattivo, 900px su desktop. */
@@ -300,7 +322,7 @@
     font-weight:600;color:var(--ink);flex:none}
   .book-dialog-close{width:44px;height:44px;border-radius:999px;border:1px solid var(--line);
     background:var(--surface);color:var(--ink);font-size:1rem;cursor:pointer;
-    display:flex;align-items:center;justify-content:center;transition:background .2s}
+    display:flex;flex:none;align-items:center;justify-content:center;transition:background .2s}
   .book-dialog-close:hover{background:rgba(95,154,170,.12)}
   @media(max-width:760px){
     .book-dialog{padding:0}
@@ -320,8 +342,9 @@
   @keyframes book-spin{to{transform:rotate(360deg)}}
 
   /* CONTATTI */
-  .contact{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+  .contact{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px}
   .info-item{display:flex;gap:14px;margin-bottom:22px}
+  .info-item>div:last-child{min-width:0}
   .info-item .ico{flex:none;width:42px;height:42px;border-radius:11px;background:rgba(131,173,186,.20);
     display:flex;align-items:center;justify-content:center;color:#4a8593;font-size:1.2rem}
   .info-item h3{font-size:1.18rem;margin-bottom:2px;font-weight:600}
@@ -334,10 +357,17 @@
   .map figcaption{padding:24px}
   .map h3{font-size:1.6rem;color:var(--green-deep);margin-bottom:12px}
   .map p{margin-bottom:22px}
+  .map .btn{display:block;padding-inline:12px}
   .map-credit{display:block;margin-top:16px;font-size:.8rem}
   .map-credit a{text-decoration:underline;text-underline-offset:3px}
   .info-item a{text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
+  .info-item .ico img{width:24px;height:24px;object-fit:contain}
   @media(max-width:760px){.contact{grid-template-columns:1fr;gap:30px}}
+  @media(max-width:600px){
+    .booking{padding:32px 20px}
+    .card p,.step p,.info-item p{font-size:1rem}
+    .booking .btn{width:100%}
+  }
 
   /* FOOTER */
   footer{border-top:1px solid var(--line);padding:42px 0;background:var(--alt)}
@@ -376,7 +406,7 @@
         <img class="logo-light" src="assets/logo/icona-ottanio.png?v=12" alt="Marchio MG — Maria Grazia Grosso" width="42" height="42">
         <img class="logo-dark" src="assets/logo/icona-chiara.png?v=12" alt="" aria-hidden="true" width="42" height="42">
         <span class="bname">
-          <strong>Maria Grazia <span>Grosso</span></strong>
+          <strong>Maria&nbsp;Grazia <span>Grosso</span></strong>
           <em>Psichiatra · Psicoterapeuta</em>
         </span>
       </a>
@@ -428,8 +458,8 @@
             <li>Laurea in Medicina e Chirurgia, Università di Pisa (2022).</li>
             <li>Specializzazione in Psichiatria, Università di Pisa (2026).</li>
             <li>Corso pratico di farmacoterapia psichiatrica, Società di Psichiatria Clinica e Sperimentale della Scuola di Pisa (2024).</li>
-            <li>Master di II livello in Medicina delle Dipendenze, UniCamillus, Roma (percorso 2025–2026).</li>
-            <li>Master in Psicoterapia Cognitivo-Comportamentale, Scuola Studi Cognitivi, Milano (percorso 2026–2027).</li>
+            <li>Master di II livello in Medicina delle Dipendenze, UniCamillus, Roma (percorso <span class="nowrap">2025–2026</span>).</li>
+            <li>Master in Psicoterapia Cognitivo-Comportamentale, Scuola Studi Cognitivi, Milano (percorso <span class="nowrap">2026–2027</span>).</li>
           </ul>
         </div>
       </div>
@@ -469,10 +499,10 @@
       <p class="lead-muted">Informazioni su prenotazione, prima visita, controlli e modalità di pagamento. Si riceve esclusivamente su appuntamento.</p>
     </div>
     <div class="steps">
-      <div class="step reveal"><h3>Richiesta e conferma</h3><p>È possibile richiedere un appuntamento tramite Appuntoo, <a href="tel:+393514030388">telefonicamente</a> o <a href="mailto:dottoressamg.grosso@gmail.com">via email</a>. Per le richieste tramite Appuntoo, la conferma viene comunicata dallo studio via email o telefono entro 24 ore.</p></div>
-      <div class="step reveal"><h3>Prima visita psichiatrica</h3><p><strong>45–60 minuti · 120 €</strong></p><p>Per la prima visita è utile portare la documentazione medica disponibile, esami ematochimici recenti e l’elenco dei farmaci assunti. È possibile essere accompagnati da un familiare.</p></div>
-      <div class="step reveal"><h3>Visite di controllo</h3><p><strong>In studio: 30–45 minuti · 100 €</strong><br><strong>Online: 30–45 minuti · 90 €</strong><br>Per prenotare una visita online è possibile contattare lo studio tramite <a href="https://wa.me/393514030388" target="_blank" rel="noopener noreferrer">WhatsApp</a>, <a href="mailto:dottoressamg.grosso@gmail.com">email</a> o <a href="tel:+393514030388">telefono</a>.</p><p>Tra gli incontri, il monitoraggio terapeutico può proseguire attraverso contatti telefonici o via email.</p></div>
-      <div class="step reveal"><h3>Indicazioni pratiche</h3><p>Il pagamento avviene al termine della visita. Sono accettati contanti, carta di credito e bonifico istantaneo. Le disdette devono essere comunicate con almeno 48 ore di preavviso.</p></div>
+      <div class="step reveal"><h3>Richiesta e conferma</h3><p>È possibile richiedere un appuntamento tramite Appuntoo, <a href="tel:+393514030388">telefonicamente</a> o <a href="mailto:dottoressamg.grosso@gmail.com">via email</a>. Per le richieste tramite Appuntoo, la conferma viene comunicata dallo studio via email o telefono entro <span class="nowrap">24 ore</span>.</p></div>
+      <div class="step reveal"><h3>Prima visita psichiatrica</h3><p class="visit-meta"><strong>45–60 minuti</strong> <strong>120&nbsp;€</strong></p><p>Per la prima visita è utile portare la documentazione medica disponibile, esami ematochimici recenti e l’elenco dei farmaci assunti. È possibile essere accompagnati da un familiare.</p></div>
+      <div class="step reveal"><h3>Visite di controllo</h3><div class="visit-options"><div class="visit-option"><p class="visit-format">In studio</p><p class="visit-meta"><span>30–45 minuti</span> <strong>100&nbsp;€</strong></p></div><div class="visit-option"><p class="visit-format">Online</p><p class="visit-meta"><span>30–45 minuti</span> <strong>90&nbsp;€</strong></p></div></div><p>Per prenotare una visita online è possibile contattare lo studio tramite <a href="https://wa.me/393514030388" target="_blank" rel="noopener noreferrer">WhatsApp</a>, <a href="mailto:dottoressamg.grosso@gmail.com">email</a> o <a href="tel:+393514030388">telefono</a>.</p><p>Tra gli incontri, il monitoraggio terapeutico può proseguire attraverso contatti telefonici o via email.</p></div>
+      <div class="step reveal"><h3>Indicazioni pratiche</h3><p>Il pagamento avviene al termine della visita. Sono accettati contanti, carta di credito e bonifico istantaneo. Le disdette devono essere comunicate con almeno <span class="nowrap">48 ore</span> di preavviso.</p></div>
     </div>
   </div>
 </section>
@@ -482,9 +512,9 @@
   <div class="wrap">
     <div class="booking reveal">
       <h2>Richiedi una visita</h2>
-      <p>È possibile richiedere una visita in studio a Belvedere Marittimo tramite Appuntoo, telefonicamente o via email. Le richieste tramite Appuntoo sono soggette alla conferma dello studio, comunicata via email o telefono entro 24 ore.</p>
+      <p>È possibile richiedere una visita in studio a Belvedere Marittimo tramite Appuntoo, telefonicamente o via email. Le richieste tramite Appuntoo sono soggette alla conferma dello studio, comunicata via email o telefono entro <span class="nowrap">24 ore</span>.</p>
       <a class="btn btn-primary" id="book-open" data-booking-open href="https://appuntoo.com/prenota/studio-di-maria-grazia-grosso/psichiatra/pisa" target="_blank" rel="noopener noreferrer">Richiedi una visita →</a>
-      <div class="alt">Informazioni e prenotazioni: <a href="tel:+393514030388">351 403 0388</a>, dal lunedì al venerdì, dalle 14:00 alle 16:00, oppure <a href="mailto:dottoressamg.grosso@gmail.com">dottoressamg.grosso@gmail.com</a>.</div>
+      <div class="alt"><p>Informazioni e prenotazioni</p><p><a href="tel:+393514030388">351 403 0388</a><br>Dal lunedì al venerdì, <span class="nowrap">14:00–16:00</span></p><p><a href="mailto:dottoressamg.grosso@gmail.com" class="email-link">dottoressamg.grosso<wbr>@gmail.com</a></p></div>
     </div>
   </div>
 </section>
@@ -517,9 +547,9 @@
     <div class="contact" style="margin-top:38px">
       <div class="reveal">
         <div class="info-item"><div class="ico"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><h3>Indirizzo</h3><p>Via Sant’Antonio 20<br>Belvedere Marittimo (CS)<br>Piano terra, senza barriere architettoniche</p></div></div>
-        <div class="info-item"><div class="ico"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><div><h3>Telefono</h3><p><a href="tel:+393514030388">351 403 0388</a><br>Dal lunedì al venerdì, dalle 14:00 alle 16:00.<br>In caso di mancata risposta, il paziente sarà ricontattato appena possibile.</p></div></div>
-        <div class="info-item"><div class="ico"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-10 5L2 7"/></svg></div><div><h3>Email</h3><p><a href="mailto:dottoressamg.grosso@gmail.com">dottoressamg.grosso@gmail.com</a><br>Per richiedere un appuntamento, concordare le visite di controllo online e inviare comunicazioni non urgenti.</p></div></div>
-        <div class="info-item"><div class="ico"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-10 5L2 7"/></svg></div><div><h3>WhatsApp</h3><p><a href="https://wa.me/393514030388" target="_blank" rel="noopener noreferrer">Contatto WhatsApp ↗</a><br>Per prenotare le visite online e per comunicazioni non urgenti. Le risposte vengono fornite appena possibile.</p></div></div>
+        <div class="info-item"><div class="ico"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><div><h3>Telefono</h3><p><a href="tel:+393514030388">351 403 0388</a><br>Dal lunedì al venerdì, dalle <span class="nowrap">14:00</span> alle <span class="nowrap">16:00</span>.<br>In caso di mancata risposta, il paziente sarà ricontattato appena possibile.</p></div></div>
+        <div class="info-item"><div class="ico"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-10 5L2 7"/></svg></div><div><h3>Email</h3><p><a href="mailto:dottoressamg.grosso@gmail.com" class="email-link">dottoressamg.grosso<wbr>@gmail.com</a><br>Per richiedere un appuntamento, concordare le visite di controllo online e inviare comunicazioni non urgenti.</p></div></div>
+        <div class="info-item"><div class="ico"><img src="assets/icons/whatsapp-glyph-green.svg" alt="" aria-hidden="true" width="24" height="24" loading="lazy"></div><div><h3>WhatsApp</h3><p><a href="https://wa.me/393514030388" target="_blank" rel="noopener noreferrer">Contatto WhatsApp ↗</a><br>Per prenotare le visite online e per comunicazioni non urgenti. Le risposte vengono fornite appena possibile.</p></div></div>
         <div class="info-item"><div class="ico"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><h3>Visite su appuntamento</h3><p>Si riceve esclusivamente su appuntamento. Le visite possono essere richieste tramite Appuntoo, telefonicamente o via email.</p></div></div>
       </div>
       <!-- Mappa statica locale: nessun iframe, cookie o collegamento a server di mappe prima del click. -->
@@ -530,7 +560,7 @@
         <figcaption>
           <h3 id="studio-map-title">Lo studio</h3>
           <p>Via Sant’Antonio 20<br>Belvedere Marittimo (CS)<br>Piano terra, senza barriere architettoniche</p>
-          <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&amp;query=39.617406%2C15.858948" target="_blank" rel="noopener noreferrer">Apri in Google Maps ↗</a>
+          <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&amp;query=39.617406%2C15.858948" target="_blank" rel="noopener noreferrer">Apri in <span class="nowrap">Google Maps <span aria-hidden="true">↗</span></span></a>
           <small class="map-credit">© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a></small>
         </figcaption>
       </figure>
@@ -544,8 +574,8 @@
     <div class="foot">
       <img class="foot-logo logo-light" src="assets/logo/lockup-orizzontale.png?v=11" alt="Dott.ssa Maria Grazia Grosso · Psichiatra · Psicoterapeuta" width="607" height="170">
       <img class="foot-logo logo-dark" src="assets/logo/lockup-orizzontale-dark.png?v=11" alt="" aria-hidden="true" width="607" height="170">
-      <div>© <span id="yr"></span> Dott.ssa Maria Grazia Grosso · P. IVA 02586370500</div>
-      <div><a href="privacy.html">Privacy</a> · Iscritta all’Ordine dei Medici di Pisa, n. 07118</div>
+      <div>© <span id="yr"></span> Dott.ssa Maria Grazia Grosso · <span class="nowrap">P. IVA 02586370500</span></div>
+      <div><a href="privacy.html">Privacy</a> · Iscritta all’Ordine dei Medici di Pisa, <span class="nowrap">n. 07118</span></div>
     </div>
   </div>
 </footer>
@@ -592,15 +622,30 @@
 
   // Menu mobile
   const header = document.querySelector('header');
+  if ('ResizeObserver' in window) {
+    new ResizeObserver(()=>{
+      root.style.setProperty('--nav-height', `${header.getBoundingClientRect().height}px`);
+    }).observe(header);
+  }
   const menuBtn = document.querySelector('.menu-btn');
   const setMenu = (open)=>{
     header.classList.toggle('nav-open', open);
     menuBtn.setAttribute('aria-expanded', open);
     menuBtn.setAttribute('aria-label', open ? 'Chiudi menu' : 'Apri menu');
   };
-  menuBtn.addEventListener('click', (e)=>{ e.stopPropagation(); setMenu(!header.classList.contains('nav-open')); });
+  menuBtn.addEventListener('click', (e)=>{
+    e.stopPropagation();
+    const open = !header.classList.contains('nav-open');
+    setMenu(open);
+    if (open) document.querySelector('#nav-links a').focus({preventScroll:true});
+  });
   document.querySelectorAll('#nav-links a').forEach(a=>a.addEventListener('click', ()=>setMenu(false)));
   document.addEventListener('click', (e)=>{ if(header.classList.contains('nav-open') && !header.contains(e.target)) setMenu(false); });
+  header.addEventListener('focusout', ()=>{
+    window.setTimeout(()=>{
+      if (!header.contains(document.activeElement)) setMenu(false);
+    },0);
+  });
   document.addEventListener('keydown', (e)=>{
     if (e.key==='Escape' && header.classList.contains('nav-open')) {
       const focusWasInMenu = document.getElementById('nav-links').contains(document.activeElement);

@@ -45,15 +45,26 @@
   body{font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.7;-webkit-font-smoothing:antialiased}
   .wrap{max-width:760px;margin:0 auto;padding:0 24px}
   header{border-bottom:1px solid var(--line);padding:20px 0}
-  header .wrap{display:flex;align-items:center;gap:12px}
-  header img{width:38px;height:38px}
+  header .wrap{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  header img{width:38px;height:38px;flex:none}
+  header strong{min-width:0}
   header a{color:var(--green-deep);text-decoration:none;font-weight:600;font-size:.95rem}
-  header .home{margin-left:auto}
+  header .home{margin-left:auto;white-space:nowrap;min-height:44px;display:inline-flex;align-items:center}
+  .nowrap,a[href^="tel:"]{white-space:nowrap}
+  .email-link{overflow-wrap:anywhere}
+  .logo-dark{display:none}
+  :root[data-theme="dark"] .logo-light{display:none}
+  :root[data-theme="dark"] .logo-dark{display:block}
+  @media(prefers-color-scheme:dark){
+    :root:not([data-theme="light"]) .logo-light{display:none}
+    :root:not([data-theme="light"]) .logo-dark{display:block}
+  }
+  @media(max-width:520px){header .home{flex-basis:100%;margin-left:50px}}
   main{padding:44px 0 70px}
-  h1{font-family:var(--serif);font-weight:600;font-size:clamp(2rem,5vw,2.6rem);margin-bottom:6px}
+  h1{font-family:var(--serif);font-weight:600;font-size:clamp(2rem,5vw,2.6rem);margin-bottom:12px;line-height:1.15;text-wrap:balance}
   .updated{color:var(--muted);font-size:.9rem;margin-bottom:14px}
-  .note{background:rgba(95,154,170,.12);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:.92rem;color:var(--muted);margin:18px 0 30px}
-  h2{font-family:var(--serif);font-weight:600;font-size:1.5rem;margin:30px 0 8px;color:var(--green-deep)}
+  .note{background:rgba(95,154,170,.12);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:.92rem;color:var(--ink);margin:18px 0 30px}
+  h2{font-family:var(--serif);font-weight:600;font-size:1.5rem;margin:30px 0 12px;color:var(--green-deep);line-height:1.25;text-wrap:balance}
   p,li{color:var(--ink);font-size:1rem;margin-bottom:10px}
   ul{padding-left:22px;margin-bottom:10px}
   a{color:var(--green-deep)}
@@ -71,7 +82,7 @@
 <a class="skip-link" href="#main-content">Vai al contenuto</a>
 <header>
   <div class="wrap">
-    <img src="assets/logo/icona-ottanio.png?v=12" alt="MG">
+    <img class="logo-light" src="assets/logo/icona-ottanio.png?v=12" alt="Marchio MG"><img class="logo-dark" src="assets/logo/icona-chiara.png?v=12" alt="" aria-hidden="true">
     <strong style="font-family:var(--serif);color:var(--green-deep)">Maria Grazia Grosso</strong>
     <a class="home" href="index.html">← Torna al sito</a>
   </div>
@@ -89,8 +100,8 @@
     <h2>1. Titolare del trattamento</h2>
     <p><strong>Dott.ssa Maria Grazia Grosso</strong> — Medico specialista in psichiatria e psicoterapeuta.<br>
     Studio: Via Sant’Antonio 20, Belvedere Marittimo (CS).<br>
-    P. IVA 02586370500 · Iscritta all’Ordine dei Medici di Pisa, n. 07118.<br>
-    Email: <a href="mailto:dottoressamg.grosso@gmail.com">dottoressamg.grosso@gmail.com</a> · Telefono: <a href="tel:+393514030388">351 403 0388</a>.</p>
+    <span class="nowrap">P. IVA 02586370500</span> · Iscritta all’Ordine dei Medici di Pisa, <span class="nowrap">n. 07118</span>.<br>
+    Email: <a href="mailto:dottoressamg.grosso@gmail.com" class="email-link">dottoressamg.grosso<wbr>@gmail.com</a> · Telefono: <a href="tel:+393514030388">351 403 0388</a>.</p>
 
     <h2>2. Dati trattati, finalità e basi giuridiche</h2>
     <ul>
@@ -127,7 +138,7 @@
 
     <h2>8. Diritti dell’interessato</h2>
     <p>Nei casi e nei limiti previsti dal GDPR, l’interessato può esercitare i diritti di accesso, rettifica, cancellazione, limitazione e portabilità, quando applicabile. Per i trattamenti fondati sul legittimo interesse è previsto il diritto di opposizione nei termini dell’art. 21 GDPR.</p>
-    <p>Le richieste relative ai trattamenti di competenza della titolare possono essere inviate a <a href="mailto:dottoressamg.grosso@gmail.com">dottoressamg.grosso@gmail.com</a>. Sono gestite senza ingiustificato ritardo e, di norma, entro un mese dal ricevimento; nei casi previsti, il termine può essere prorogato di ulteriori due mesi, con comunicazione dei motivi entro il primo mese. In caso di dubbi ragionevoli sull’identità, possono essere richieste le informazioni necessarie alla verifica.</p>
+    <p>Le richieste relative ai trattamenti di competenza della titolare possono essere inviate a <a href="mailto:dottoressamg.grosso@gmail.com" class="email-link">dottoressamg.grosso<wbr>@gmail.com</a>. Sono gestite senza ingiustificato ritardo e, di norma, entro un mese dal ricevimento; nei casi previsti, il termine può essere prorogato di ulteriori due mesi, con comunicazione dei motivi entro il primo mese. In caso di dubbi ragionevoli sull’identità, possono essere richieste le informazioni necessarie alla verifica.</p>
     <p>La cancellazione può incontrare i limiti previsti dalla legge, compresi gli obblighi di conservazione e la tutela di diritti. Per i trattamenti effettuati autonomamente dai fornitori, i diritti possono essere esercitati ai recapiti delle rispettive informative. Se un servizio esterno richiede un consenso, le modalità di revoca sono descritte nella relativa informativa.</p>
     <p>È possibile proporre reclamo al <a href="https://www.garanteprivacy.it/" target="_blank" rel="noopener noreferrer"><strong>Garante per la protezione dei dati personali</strong></a> o ad altra autorità di controllo competente ai sensi del GDPR.</p>
 
