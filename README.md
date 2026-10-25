@@ -29,7 +29,7 @@ Dati professionali confermati: P.IVA `02586370500`, Ordine dei Medici di Pisa n.
 
 Restano da confermare:
 
-- Stato di conseguimento dei master: sono riportati come percorsi formativi con le date fornite.
+- Stato di conseguimento dei master: sono riportati come percorsi formativi; gli anni non sono pubblicati, come richiesto dall’utente.
 - Profilo **Appuntoo**: quello collegato è temporaneamente disattivato e contiene ancora `/pisa`. Verificare sede, prestazioni e tariffe prima di riattivarlo; non ricostruire un nuovo URL per ipotesi.
 
 La pagina **Privacy** riguarda esclusivamente navigazione e funzionamento del sito (hosting, tema, mappa e apertura dei servizi esterni). Prenotazioni, comunicazioni con lo studio e attività clinica saranno disciplinate da un'informativa separata, come indicato dall'utente. Appuntoo è considerato già verificato.
