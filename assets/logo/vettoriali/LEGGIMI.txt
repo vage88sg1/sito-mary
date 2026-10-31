@@ -1,0 +1,19 @@
+LOGHI VETTORIALI — DOTT.SSA MARIA GRAZIA GROSSO
+
+SVG con forme e scritte convertite in tracciati. Nessun font da installare,
+nessuna immagine raster incorporata. Si possono ingrandire e modificare in
+Illustrator, Affinity Designer, Inkscape e altri programmi per grafica vettoriale.
+
+Le composizioni riprendono i loghi ottanio originali ad alta risoluzione.
+Le scritte sono ricostruite dai caratteri originali Cormorant Garamond, Mulish
+e Sacramento conservati nella guida del marchio; la grafica resta separata
+per elementi. Le versioni dark utilizzano i colori del tema scuro del sito.
+
+I loghi principali e il monogramma hanno sfondo trasparente.
+Le icone includono la propria forma colorata; versione-su-colore include
+il pannello ottanio. I file dark servono per sfondi scuri.
+
+Il PDF del pacchetto di esportazione contiene una variante per pagina, nello stesso
+ordine dei segnalibri. La favicon conserva il ritaglio del file originale.
+I colori sono RGB. Le copie SVG adattate al layout del sito si trovano nella
+cartella superiore. I PNG originali restano disponibili per compatibilità.

@@ -4,6 +4,8 @@ Sito vetrina (one-page) per la **Dott.ssa Maria Grazia Grosso** — Psichiatra e
 
 Sito statico: un singolo file [`index.html`](index.html) con CSS inline e i loghi in [`assets/logo/`](assets/logo). Nessuna build, nessuna dipendenza.
 
+I loghi visibili sul sito e la favicon usano SVG con le scritte convertite in tracciati, nelle varianti per tema chiaro e scuro. Le copie in `assets/logo/` conservano gli spazi e le dimensioni del layout; gli originali vettoriali per la grafica sono in `assets/logo/vettoriali/`. I PNG restano disponibili per l’icona Apple, l’anteprima social e la favicon di riserva.
+
 ## Pubblicazione
 
 Il sito è ospitato su GitHub Pages dal ramo `main`, con dominio `dottoressamggrosso.it` registrato su Host.it. Il file `CNAME` mantiene il collegamento al dominio; `www` punta a `vage88sg1.github.io` e viene reindirizzato al dominio principale. L’indicizzazione resta temporaneamente bloccata tramite meta `noindex, nofollow` in entrambe le pagine e `Disallow: /` in `robots.txt`.
