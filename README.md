@@ -44,4 +44,4 @@ La revisione responsive protegge le unità numeriche (tariffe, durate, anni, tel
 
 Immagine della mappa e coordinate (`39.617406, 15.858948`) provengono dalla sede di Belvedere Marittimo nel repository [sito-gaetano-grosso](https://github.com/vage88sg1/sito-gaetano-grosso/blob/76457b95decc8ac6760966be8329c297144dbf8b/index.html). Dati cartografici © [OpenStreetMap contributors](https://www.openstreetmap.org/copyright).
 
-> I materiali sorgente del brand, i questionari e le note di revisione sono conservati in `_sources/`, esclusa dal repo tramite `.gitignore`.
+> I materiali di riferimento e le bozze del sito sono conservati nella cartella di lavoro principale Studio Mary, in `../_sources/sito-mary/`. Gli altri materiali, le esportazioni e i file temporanei si trovano nelle cartelle `../assets/`, `../output/`, `../_sources/` e `../tmp/`. Il repository contiene solo il sito e le sue risorse.
