@@ -8,7 +8,7 @@ I loghi visibili sul sito e la favicon usano SVG con le scritte convertite in tr
 
 ## Pubblicazione
 
-Il sito è ospitato su GitHub Pages dal ramo `main`, con dominio `dottoressamggrosso.it` registrato su Host.it. Il file `CNAME` mantiene il collegamento al dominio; `www` punta a `vage88sg1.github.io` e viene reindirizzato al dominio principale. L’indicizzazione resta temporaneamente bloccata tramite meta `noindex, nofollow` in entrambe le pagine e `Disallow: /` in `robots.txt`.
+Il sito è ospitato su GitHub Pages dal ramo `main`, con dominio `dottoressamggrosso.it` registrato su Host.it. Il file `CNAME` mantiene il collegamento al dominio; `www` punta a `vage88sg1.github.io` e viene reindirizzato al dominio principale. Dal 4 novembre 2026 l’indicizzazione è abilitata: entrambe le pagine usano `index, follow`, URL canonici HTTPS e sono elencate in `sitemap.xml`, segnalata anche in `robots.txt`.
 
 ## Anteprima in locale
 
@@ -25,7 +25,7 @@ python3 -m http.server 4521
 
 ## Contenuti e finalizzazione
 
-I contenuti sono stati aggiornati sulla base delle risposte della dottoressa al questionario del 24 ottobre 2026. Il sito mantiene il blocco dell'indicizzazione tramite meta robots e `robots.txt`.
+I contenuti sono stati aggiornati sulla base delle risposte della dottoressa al questionario del 24 ottobre 2026. Il sito consente l’indicizzazione da parte dei motori di ricerca.
 
 Dati professionali confermati: P.IVA `02586370500`, Ordine dei Medici di Pisa n. `07118`. Email definitiva: `dottoressamg.grosso@gmail.com`. Durate e tariffe sono confermate per la pubblicazione.
 
@@ -45,3 +45,9 @@ La revisione responsive protegge le unità numeriche (tariffe, durate, anni, tel
 Immagine della mappa e coordinate (`39.617406, 15.858948`) provengono dalla sede di Belvedere Marittimo nel repository [sito-gaetano-grosso](https://github.com/vage88sg1/sito-gaetano-grosso/blob/76457b95decc8ac6760966be8329c297144dbf8b/index.html). Dati cartografici © [OpenStreetMap contributors](https://www.openstreetmap.org/copyright).
 
 > I materiali di riferimento e le bozze del sito sono conservati nella cartella di lavoro principale Studio Mary, in `../_sources/sito-mary/`. Gli altri materiali, le esportazioni e i file temporanei si trovano nelle cartelle `../assets/`, `../output/`, `../_sources/` e `../tmp/`. Il repository contiene solo il sito e le sue risorse.
+
+## Google Search Console
+
+Per monitorare indicizzazione, ricerche, impressioni e clic, verificare la proprietà in [Google Search Console](https://search.google.com/search-console/) con l’account Google del titolare. La proprietà Dominio `dottoressamggrosso.it` richiede il record DNS fornito da Google; in alternativa, per la proprietà con prefisso URL `https://dottoressamggrosso.it/` si può pubblicare il file HTML o il meta tag di verifica fornito da Google.
+
+Dopo la verifica, inviare `https://dottoressamggrosso.it/sitemap.xml` nella sezione Sitemap e controllare la home con Controllo URL, richiedendone l’indicizzazione. La verifica dell’account e l’invio in Search Console non si eseguono automaticamente con il rilascio del codice. Non rimuovere il token di verifica dopo l’attivazione. Search Console non richiede script, cookie o Google Analytics nel sito.
